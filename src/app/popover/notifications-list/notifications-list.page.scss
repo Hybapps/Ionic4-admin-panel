@@ -1,0 +1,28 @@
+ion-list{
+    padding-top: calc(var(--ion-padding)*3/2);
+    ion-item{
+        margin-bottom: var(--ion-padding);
+        &:last-of-type{
+            --inner-border-width:0px;
+        }
+        ion-icon{
+            &[slot=start]{
+                margin-top: 0px;
+                margin-bottom:0px;
+                align-self: flex-start;
+            }
+        }
+        ion-label{
+            margin:0px;
+            h5{
+                font-size:1.3rem;
+                font-weight:600;
+            }
+            p{
+                font-size:1.2rem;
+                margin:6px 0px ;
+                white-space: normal;
+            }
+        }
+    }
+}

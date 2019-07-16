@@ -1,0 +1,129 @@
+{
+  "Schools": [
+    {
+        "table": "schools",
+        "pk": "schoolId",
+        "title":"Schools",
+        "formUrl": "/Schools",
+        "join": "schools INNER JOIN governments ON govId=schoolGovId",
+        "requestFields":"*",
+        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"schoolNameAr","type":"text","showVal":"govNameAr"},{"name":"Governaments","search":1,"sortItem":1,"name_indb":"govNameAr","type":"text","showVal":"govNameAr"},{"name":"Type","search":1,"sortItem":1,"name_indb":"schoolType","type":"options","showVal":"schoolType"},{"name":"status","search":0,"sortItem":1,"name_indb":"schoolActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+        "activeCol":"schoolActive",
+        "activeitem":0
+       
+    }
+],
+"Stages": [
+    {
+        "table": "stages",
+        "pk": "stageId",
+        "title":"Stages",
+        "formUrl": "/Stages",
+        "join": "",
+        "requestFields":"*",
+        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"stageNameAr","type":"text","showVal":"stageNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"stageActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+        "activeCol":"stageActive",
+        "activeitem":0
+       
+    }
+],
+"Semistars": [
+    {
+        "table": "semistars",
+        "pk": "semId",
+        "title":"Semistars",
+        "formUrl": "/Semistars",
+         "join": "",
+        "requestFields":"*",
+        "GridCols": [{"name":"name","search":1,"sortItem":1,"name_indb":"semNameAr","type":"text","showVal":"semNameAr"}],
+         "activeCol":"",
+        "activeitem":0
+       
+    }
+],
+"Grades": [
+    {
+        "table": "grades",
+        "pk": "gradeId",
+        "title":"Grades",
+        "formUrl": "/Grades",
+         "join": "grades inner join stages ON gradestageId = stageId",
+        "requestFields":"*",
+        "GridCols": [{"name":"name","search":1,"sortItem":1,"name_indb":"gradeNameAr","type":"text","showVal":"gradeNameAr"},{"name":"stage","search":1,"sortItem":1,"name_indb":"stageNameAr","type":"text","showVal":"stageNameAr"}],
+        "activeCol":"",
+        "activeitem":0
+       
+    }
+],
+"Test": [
+    {
+        "table": "grades",
+        "pk": "gradeId",
+        "title":"Grades",
+        "formUrl": "/Grades",
+         "join": "grades inner join stages ON gradestageId = stageId",
+        "requestFields":"*",
+        "GridCols": [{"name":"name","search":1,"sortItem":1,"name_indb":"gradeNameAr","type":"text","showVal":"gradeNameAr"},{"name":"stage","search":1,"sortItem":1,"name_indb":"stageNameAr","type":"text","showVal":"stageNameAr"}],
+        "activeCol":"",
+        "activeitem":0
+       
+    }
+],
+"Subjects": [
+    {
+        "table": "subjects",
+        "pk": "subjectId",
+        "title":"subjects",
+        "formUrl": "/Subjects",
+        "join": "subjects INNER JOIN stages ON stageId=subjectGradeId",
+        "requestFields":"*",
+        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"subjectNameAr","type":"text","showVal":"subjectName"},{"name":"Grade","search":1,"sortItem":1,"name_indb":"stageNameAr","type":"text","showVal":"subjectGradeId"},{"name":"Type","search":1,"sortItem":1,"name_indb":"subjectType","type":"text","showVal":"subjectType"}],
+        "activeCol":"",
+        "activeitem":0
+       
+    }
+],
+"Governate": [
+  {
+      "table": "governments",
+      "pk": "govId",
+      "title":"Governaments",
+      "formUrl": "/Governate",
+      "join": "",
+      "requestFields":"*",
+      "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"govNameAr","type":"text","showVal":"govNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"govActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+      "activeCol":"govActive",
+      "activeitem":0
+     
+  }
+],
+"Units": [
+  {
+      "table": "units",
+      "pk": "unitId",
+      "title":"Units",
+      "formUrl": "/Units",
+      "join": "units inner join subjects on unitSubjectId=subjectId",
+      "requestFields":"*",
+      "GridCols": [{"name":"subjects","search":1,"sortItem":1,"name_indb":"subjectNameAr","type":"text","showVal":"subjectNameAr"},{"name":"name","search":1,"sortItem":0,"name_indb":"unitNameAr","type":"text","showVal":"unitNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"unitActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+      "activeCol":"unitActive",
+      "activeitem":1
+     
+  }
+]
+,
+"Lessons": [
+  {
+      "table": "lessons",
+      "pk": "lessonId",
+      "title":"Lessons",
+      "formUrl": "/Lessons",
+      "join": "lessons INNER JOIN units ON unitId=lessonUnitId INNER JOIN months on monthId=lessonMonthId",
+      "requestFields":"*",
+      "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"lessonName","type":"text","showVal":"lessonName"},{"name":"Units","search":1,"sortItem":0,"name_indb":"unitNameAr","type":"text","showVal":"unitNameAr"},{"name":"months","search":1,"sortItem":1,"name_indb":"monthTitle","type":"text","showVal":"monthTitle"},{"name":"status","search":0,"sortItem":1,"name_indb":"lessonActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+      "activeCol":"lessonActive",
+      "activeitem":1
+     
+  }
+]
+}

@@ -1,0 +1,108 @@
+<ion-header>
+ 
+  <ion-toolbar class="ion-no-padding">
+    <ion-row class="search-filter">
+      <ion-col size-md="3" size="3">
+        <ion-searchbar placeholder="{{'search' | translate}}" #searchInput [(ngModel)]="search.q"  (ionBlur)="searchGrid($event)"></ion-searchbar>
+      </ion-col>
+      <ion-col offset-md="2" size-md="3" size="4">
+        <ion-item lines="none">
+          <ion-label>{{'Sort' | translate}}</ion-label>
+          <ion-select #sortselect placeholder="{{'select' | translate}}"  [(ngModel)]="sort.q" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}" (ionChange)="sortItem()">
+              <ion-select-option value="{{item.name_indb}}" ngValue="item.name_indb" *ngFor="let item of GridCols | filterBy: {sortItem:1}" >{{item.name| translate}}</ion-select-option>
+      <!--       <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    <!--   <ion-col size-md="3" size="4">
+        <ion-item lines="none">
+          <ion-label>{{'gender' | translate}}</ion-label>
+          <ion-select placeholder="{{'select' | translate}}" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}">
+            <ion-select-option value="f">Female</ion-select-option>
+            <ion-select-option value="m">Male</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col> -->
+      <ion-col size-md="1" size="1" class="page-num text-center">
+        <span>{{'page' | translate}}: {{currentPage}}/{{allpages}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid class="main-grid">
+    <ion-row class="table-header"  text-center>
+      <ion-col *ngFor="let item of GridCols">
+        <h3>{{item.name | translate}}</h3>
+      </ion-col>
+   
+      <ion-col>
+        <h3>{{'action' | translate}}</h3>
+      </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let item of listData " text-center>
+        
+    <ion-col  *ngFor="let col of GridCols ">
+      <p *ngIf=" col.type=='text'">
+        <span *ngFor="let val of item | keyvalue " >
+          <span *ngIf="val.key==col.name_indb ">{{val.value}}</span>
+        </span>  
+      </p>
+      <p *ngIf=" col.type=='options'">
+          <span *ngFor="let val of item | keyvalue " >
+            <span *ngIf="val.key==col.name_indb ">{{val.value|translate}}</span>
+          </span>  
+        </p>
+      
+         <p *ngIf=" col.type=='boolean'"><span *ngFor="let val of item | keyvalue " >
+          <ion-icon *ngIf="val.key==col.name_indb && val.value==1" name="md-checkmark-circle" color="success" class="active_case"></ion-icon>
+
+          </span>
+        </p>
+        <p *ngIf=" col.type=='boolean'"><span *ngFor="let val of item | keyvalue " >
+            <ion-icon *ngIf="val.key==col.name_indb && val.value==0" name="md-close-circle" color="danger" class="inactive_case"></ion-icon>
+        
+          </span>
+        </p> 
+    </ion-col>
+ 
+    <ion-col>
+      <ion-button (click)="actionList($event,item)" class="ion-no-margin" fill="clear" size="small">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <!--   <ion-row *ngFor="let item of crud.listData" text-center>
+        
+        <ion-col>
+          <p>{{item['govName' + global.lang]}}</p>
+        </ion-col>
+        <ion-col>
+          <p *ngIf="item.govActive==1">{{'active' | translate}}</p>
+          <p *ngIf="item.govActive==0">{{'inactive' | translate}}</p>
+        </ion-col>
+      
+        <ion-col>
+          <ion-button (click)="actionList($event,item)" class="ion-no-margin" fill="clear" size="small">
+            <ion-icon slot="icon-only" name="more"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    -->
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="{{global.fab}}" slot="fixed">
+    <ion-fab-button color="secondary" routerLink="{{formUrl}}" routerDirection="root">
+      <ion-icon color="light" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- fab placed to the (vertical) center and end -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="(allpages  != 1) && (allpages > currentPage)">
+    <ion-fab-button (click)="doInfinite()" size="small">
+      <ion-icon name="ios-arrow-down"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

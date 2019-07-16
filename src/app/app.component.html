@@ -1,0 +1,72 @@
+<ion-app [ngClass]="{'no_header' : global.title=='sign'}">
+  <ion-header class="main_header" *ngIf="global.title!='sign'">
+    <ion-toolbar>
+      <div slot="start" class="control_content">
+          <h4 >{{'admin_panel'| translate}} </h4>
+      </div>
+      <ion-buttons slot="start">
+        <ion-menu-toggle >
+          <ion-icon name="menu"></ion-icon>
+        </ion-menu-toggle>
+      </ion-buttons>
+      <ion-title>
+        {{global.title}}
+      </ion-title> 
+      <ion-buttons slot="end">
+        <ion-button (click)="global.languagePopover($event)">
+          <fa-icon [icon]="['far', 'flag']"></fa-icon>
+        </ion-button>
+        <ion-button (click)="global.notificationPopover($event)">
+          <fa-icon [icon]="['far', 'bell']"></fa-icon>
+        </ion-button>
+        <ion-button (click)="global.listPopover($event)">
+          <fa-icon [icon]="['far', 'user']"></fa-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-split-pane>
+
+
+    <ion-menu side="start" menuId="left"> 
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of appPages; let i = index">
+            <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none">
+              <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
+              <ion-label>
+                {{item.title| translate}}
+              </ion-label>
+              <ion-icon color="light" slot="end" [name]="item.arrow"></ion-icon>
+            </ion-item>
+            <div *ngIf="isGroupShown(item)" class="sub-list">
+              <p [routerLink]="[p.url]" *ngFor="let p of item.sublist">{{p.title | translate}}</p>
+            </div>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+      
+    </ion-menu>
+
+    <ion-menu side="end" menuId="right"> 
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of appPages; let i = index">
+            <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none" >
+              <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
+              <ion-label>
+                {{item.title| translate}}
+              </ion-label>
+              <ion-icon color="light" slot="end" [name]="item.arrow"></ion-icon>
+            </ion-item>
+            <div *ngIf="isGroupShown(item)" class="sub-list">
+              <!-- class="active"  -->
+              <p [routerLink]="[p.url]" *ngFor="let p of item.sublist" routerDirection="root">{{p.title | translate}}</p>
+            </div>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

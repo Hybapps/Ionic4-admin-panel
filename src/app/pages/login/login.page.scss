@@ -1,0 +1,153 @@
+ion-content{
+    --background:var(--ion-color-primary); 
+    .top-cir{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .bottom-cir{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .container{
+        min-height:100%;
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .login-content{
+        // @media (min-width: 776px) {
+        //     position: absolute;
+        //     max-height:400px;             
+        //     left: 0;
+        //     right: 0;
+        //     top: 0;
+        //     bottom: 0;
+        //     margin:auto;
+        // }
+        border-radius: 10px;
+        // width: 800px;
+        max-width: 90%;
+        overflow: hidden;
+        box-shadow:0 15px 32px 0 rgba(0,0,0,.2); 
+        // margin:30px auto;
+        h3{
+            font-size:1.3rem;
+            font-family: 'SaNazeguln';
+            text-transform: uppercase;
+        }
+        .select-lng{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            ion-select{
+                font-family: 'SaNazeguln';
+                max-width: 100%;
+                color: var(--ion-color-primary);  
+            }
+        }
+        .welcome-text{
+            background:var(--ion-color-primary-tint);
+            div{
+                height: 100%;
+                padding: calc(var(--ion-padding)*2); 
+                position: relative;
+                color: #fff;
+                z-index: 10;    
+                display: flex;
+                flex-direction: column;
+                justify-content: center;     
+                img{
+                    width: 158px;
+                    margin: 0 auto;
+                    margin-bottom: 50px;
+                }
+                p{
+                    font-size:1.2rem;
+                    line-height: 1.5rem;
+                    margin: 0;
+                }
+            }
+            
+        }
+        
+        .login-form{
+            padding: 40px;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            .lang_btn{
+                align-self: flex-end;
+                position: absolute;
+                top: 16px;
+                margin: 0px;
+                margin-inline-start: 24px;
+                --padding-start:0px;
+                --padding-end:0px;
+                width:34px;
+                height: 34px;
+                font-family:'arabicfont' ;
+            }
+            h3{
+               color: var(--ion-color-primary);  
+            }
+            p{
+                font-size: 1.3rem;
+                margin: 0 0 10px 0;
+            }
+            ion-list{
+                padding: 20px 0 0 0;
+                ion-item{
+                    --background:rgba(var(--ion-color-medium-rgb),.15);	
+                    --border-width	: 0; 
+                    margin-bottom: 10px;
+                    --border-radius:0px;
+                    &:last-child{
+                        margin-bottom: 0;
+                    }
+                    ion-icon{
+                        color:rgba(var(--ion-color-medium-rgb),.5);	
+                        font-size: 2rem;
+                        margin: 0 10px;
+                    }
+                }
+            }
+            
+            .forgot-psw{
+                align-items: center;
+                margin-bottom: 25px;
+                ion-col{
+                    padding: 0;
+                    ion-item{
+                        --padding-end:0;
+                        --padding-start:0;
+                        font-size: 1.3rem;
+                        ion-checkbox{
+                            margin:0 10px;
+                        }
+                    }
+                    .button{
+                        text-transform: none;
+                        margin: 0;
+                        float: right;
+                    }
+                }
+            }
+        }  
+      
+        .login-btn{
+            width: 180px;
+        }
+        .powered-by{
+            color: var(--ion-color-secondary); 
+            margin-top: 15px !important; 
+            font-family: 'SaNazeguln';
+            span{
+                color: var(--ion-color-primary);   
+            }
+        }
+    }
+}

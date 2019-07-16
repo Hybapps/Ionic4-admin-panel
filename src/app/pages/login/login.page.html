@@ -1,0 +1,60 @@
+<ion-content>
+    <div class="container">
+            <img class="top-cir" src="./assets/imgs/01.png">
+            <img class="bottom-cir" src="./assets/imgs/02.png">
+            <ion-row class="login-content">
+                <ion-col class="welcome-text" size-md="4" size="12" text-center>
+                    <div>
+                        <img src="./assets/imgs/logo.png">
+                        <h3>{{ "welcome" | translate }}</h3>
+                        <p *ngIf="global.lang=='En'">is simply dummy text of the printing and typesetting industry.</p>
+                        <p *ngIf="global.lang=='Ar'">خير الكلام هو ما قلّ ودلّ وعبّر وأعطانا معنىّ جميلاً ومفيداً.</p>
+                    </div>  
+                </ion-col>
+                <ion-col class="login-form" size-md="8" size="12">
+                    <ion-button class="lang_btn" fill="solid" color="primary" (click)="global.change_lang('En')" *ngIf="global.lang=='ar'">En</ion-button>
+                    <ion-button class="lang_btn" fill="solid" color="primary" (click)="global.change_lang('Ar')" *ngIf="global.lang=='en'">ع</ion-button>
+                    <h3>{{ "login" | translate }}</h3> 
+                    <!-- <ion-item class="select-lng" lines="none">
+                        <ion-select interface="popover" [(ngModel)]="global.lang" 
+                        (ionChange)="global.changeLanguage()">
+                            <ion-select-option value="en">EN</ion-select-option>
+                            <ion-select-option value="ar">AR</ion-select-option>
+                        </ion-select>
+                    </ion-item> -->
+                    
+                    <form>
+                        <ion-list>
+                            <ion-item>
+                                <ion-icon name="person" slot="start"></ion-icon>                        
+                                <ion-input placeholder='{{ "username" | translate }}'></ion-input>
+                            </ion-item>
+                            <ion-item>
+                                <ion-icon name="lock" slot="start"></ion-icon>                        
+                                <ion-input placeholder='{{ "password" | translate }}'></ion-input>
+                            </ion-item>
+                        </ion-list>    
+        
+                        <ion-row class="forgot-psw">
+                            <ion-col>
+                                <ion-item lines="none">
+                                    <ion-label>{{ "remember_me" | translate }}</ion-label>
+                                    <ion-checkbox color="secondary" slot="start"></ion-checkbox>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col>
+                                <ion-button color="secondary" fill="clear" size="small">
+                                    {{ "forgot_password" | translate }}
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                        <div class="ion-text-center">
+                            <ion-button (click)="loginAdmin()" class="login-btn" routerLink="/statistics"  shape="round">{{ "sign_in" | translate }}</ion-button>
+                            <p class="powered-by">{{ "powered_by" | translate }} <span>Ashal</span></p>
+                        </div>
+                    </form>
+                </ion-col>
+            </ion-row>
+    </div>
+    
+</ion-content>

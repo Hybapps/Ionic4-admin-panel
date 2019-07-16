@@ -1,0 +1,56 @@
+
+
+<ion-content padding>
+  <h3>{{title| translate}}</h3>
+  <form class="admin-form ion-padding" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-row>
+      <ion-col size-md="6" size="6">
+        <ion-item>
+          <ion-label position="stacked">{{'name' | translate}} 
+            <span>*</span>
+          </ion-label>
+
+          <ion-input type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
+          <div *ngIf="submitted && !myForm.controls.name.valid" class="invalid-feedback">
+            <div> Name is required</div>
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-list radio-group    >
+      <ion-radio-group>
+        <ion-list-header>{{'status' | translate}}</ion-list-header>
+        
+        <ion-item class="radio_item">
+          <ion-label>
+            {{'active' | translate}}
+          </ion-label>
+          
+          <ion-radio value="1" slot="start" (click)="selected=1"    [checked]="selected==1" ></ion-radio>
+        </ion-item>
+        
+        <ion-item class="radio_item">
+          <ion-label>
+            {{'inactive' | translate}}
+          </ion-label>
+         
+          <ion-radio value="0" slot="start"   (click)="selected=0" [checked]="selected==0"></ion-radio>
+        </ion-item>
+       
+      </ion-radio-group>
+    </ion-list>
+    <ion-button class="submit-btn " *ngIf="!id" type="submit" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
+    <ion-button class="submit-btn " *ngIf="!id" type="submit" (click)="showGrid=1" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+    <ion-button class="submit-btn " *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
+    <ion-button class="submit-btn " *ngIf="id" (click)="showGrid=1;onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+
+  </form>
+
+  <!-- back button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="global.backToGrid('Governate')">
+      <ion-icon color="light" name="ios-arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

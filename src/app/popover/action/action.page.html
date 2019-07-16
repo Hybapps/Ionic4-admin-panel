@@ -1,0 +1,16 @@
+<ion-content>
+    <ion-list>
+        <ion-item (click)="delConfirm()">
+            <ion-icon name="close" slot="start"></ion-icon>
+            <ion-label>{{'delete' | translate }}</ion-label>
+        </ion-item>
+        <ion-item (click)="EditItem()">
+            <ion-icon name="create" slot="start"></ion-icon>
+            <ion-label>{{'edit' | translate }}</ion-label>
+        </ion-item>
+      <!--   <ion-item (click)="DeActivateItem()">
+                <ion-icon name="create" slot="start"></ion-icon>
+                <ion-label>Edit</ion-label>
+            </ion-item> -->
+    </ion-list>
+</ion-content>

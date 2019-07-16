@@ -1,0 +1,103 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar class="admin-search"  placeholder="{{'search' | translate}}"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="global.languagePopover($event)">
+           <fa-icon [icon]="['far', 'flag']"></fa-icon>
+      </ion-button> 
+      <ion-button (click)="global.notificationPopover($event)">
+          <fa-icon [icon]="['far', 'bell']"></fa-icon>
+      </ion-button>
+      <ion-button (click)="global.listPopover($event)">
+          <fa-icon [icon]="['far', 'user']"></fa-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+  <h3>{{'input_form' | translate}}</h3>
+  <form  class="admin-form ion-padding">
+      <ion-row>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'basic_input' | translate}}<span>*</span></ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <p class="note">Find helper text here for given textbox.</p>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'basic_input' | translate}}</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'basic_input' | translate}}</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'basic_input' | translate}}</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'basic_input' | translate}}</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'basic_input' | translate}}</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'summary' | translate}}</ion-label>
+            <ion-textarea rows="3"></ion-textarea>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6">
+          <ion-item>
+            <ion-label position="stacked">{{'gender' | translate}}</ion-label>
+            <ion-select  placeholder="{{'select' | translate}}" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size-md="4" size="6"> 
+          <ion-item>
+            <ion-label position="stacked">{{'static_text' | translate}}</ion-label>
+            <ion-input type="text"  value="email@pixinvent.com" disabled></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col size-md="4" size="6">
+            <ion-item class="checkbox_item">
+              <ion-label>
+                {{'checkbox' | translate}}</ion-label>
+              <ion-checkbox slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col size-md="4" size="6">
+            <ion-item class="checkbox_item">
+              <ion-label>
+                {{'checkbox' | translate}}</ion-label>
+              <ion-checkbox slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+      </ion-row>
+    </form>
+  <ion-button class="submit-btn"  shape="round">{{'submit' | translate}}</ion-button>
+</ion-content>
