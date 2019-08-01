@@ -30,8 +30,8 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: './pages/home/home.module#HomePageModule'
-  }/*,
-  {
+  }, 
+  /*{
     path: 'list',
     loadChildren: './pages/list/list.module#ListPageModule'
   },
@@ -46,10 +46,10 @@ const routes: Routes = [
   { path: 'statistics', loadChildren: './pages/statistics/statistics.module#StatisticsPageModule' },
   { path: 'Stages', loadChildren: './pages/stages/stages.module#StagesPageModule' },
   { path: 'Grades', loadChildren: './pages/grades/grades.module#GradesPageModule' },
-  { path: 'Semistars', loadChildren: './pages/semistars/semistars.module#SemistarsPageModule' },
+  { path: 'Semistars', loadChildren: './pages/semistars/semistars.module#SemistarsPageModule' },*/
   { path: 'Subjects', loadChildren: './pages/subjects/subjects.module#SubjectsPageModule' },
   //{ path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
-  { path: 'addmodal', loadChildren: './modal/addmodal/addmodal.module#AddmodalPageModule' },
+/*{ path: 'addmodal', loadChildren: './modal/addmodal/addmodal.module#AddmodalPageModule' },
 */
 
 

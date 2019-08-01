@@ -56,7 +56,7 @@ export class ActionPage implements OnInit {
   close(){
     this.popCtrl.dismiss(this.x);
   }
- // ()
+ 
   async delConfirm() {
     //TranslateService.'DeleteConfirm'.translate
    

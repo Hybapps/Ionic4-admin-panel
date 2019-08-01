@@ -16,7 +16,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Generalsettings', icon: 'home', arrow: 'ios-arrow-forward',
-      sublist: [{ title: 'Governaments', url: '/Grid/Governate' }]
+      sublist: [{ title: 'Governaments', url: '/Grid/Governate' },{ title: 'Subjects', url: '/Grid/Subjects' }]
     }/*,
     {
       title: 'Lessons', icon: 'home', arrow: 'ios-arrow-forward',
