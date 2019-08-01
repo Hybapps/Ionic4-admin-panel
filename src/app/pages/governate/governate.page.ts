@@ -5,6 +5,8 @@ import { CrudProviderService } from '../../provider/crud-provider.service';
 import { AlertController,ToastController  } from '@ionic/angular';
 import { ActivatedRoute,Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { IonicSelectableComponent } from 'ionic-selectable';
+import { Country } from '../../types';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +15,8 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class GovernatePage implements OnInit {
   public myForm: FormGroup;
+  country: Country[];
+
   id:any;
   submitted = false;
   statusSelect=1;
@@ -24,10 +28,17 @@ export class GovernatePage implements OnInit {
   toast: any;
   listData;
   selected:any=1;
+  countries;
+  portControl: FormControl;
   constructor(public global: GlobalService,public fm: FormBuilder,public crud: CrudProviderService,private alertController:AlertController,private route: ActivatedRoute,private router: Router,public translate: TranslateService, public toastController: ToastController) { 
         this.title='Governaments';
         this.translate.get(this.title).subscribe((res: string) => {           
           this.global.title = res;
+           });
+           let countryQuery={whereStatement:"status=1",pageSize:'-1'}
+           this.crud.list('countries','-1',countryQuery,'').subscribe(result=>{
+            this.countries=result['data'];
+            console.log(this.countries)
            });
         this.global.activeitem=0;
         this.buildForm();
@@ -48,7 +59,8 @@ export class GovernatePage implements OnInit {
           }
        
       });
-     
+      this.portControl = this.fm.control('',
+        Validators.required);
   }
 
   ngOnInit() {
@@ -86,8 +98,9 @@ export class GovernatePage implements OnInit {
   buildForm()
   {
     this.myForm = this.fm.group({
-      name: ['', Validators.required]/*,
-      options: new FormControl('1')*/
+      name: ['', Validators.required],
+      country:[''],
+      options: new FormControl('1')
    });
 
   }
@@ -95,22 +108,30 @@ export class GovernatePage implements OnInit {
   {
     let item=this.listData[0];
     console.log(this.listData)
+    let countryItem = this.countries.filter((filter) =>
+    {
+      return filter.id==item.govCountryId;
+    })
+console.log(countryItem)
+
     this.selected=item.govActive;
     this.myForm = this.fm.group({
-      name: [item.govNameAr, Validators.required]/*,
-      options: [item.govActive]*/
+      name: [item.govNameAr, Validators.required],
+      country:countryItem,
+      options: [item.govActive]
    });
 
   }
-
+  
   onSubmit() {
     // elshamhout
-    //console.log(val,this.myForm); 
+    console.log(this.myForm); 
       this.submitted = true;
       let data={
        govNameEn:this.myForm.controls.name.value,
        govNameAr:this.myForm.controls.name.value,
-       govActive:this.selected
+       govCountryId:this.myForm.controls.country.value.id,
+       govActive:this.myForm.controls.options.value//this.selected
      }
      console.log(this.myForm) 
      if (this.myForm.invalid) {
@@ -125,8 +146,10 @@ export class GovernatePage implements OnInit {
        this.crud.Update('governments','govId',this.id,data).subscribe(data=>{
         console.log(data)
       }); 
- 
-    this.presentAlert();
+      if(this.showGrid==1)
+          this.router.navigateByUrl('/Grid/Governate');
+      else this.buildForm()
+  //  this.presentAlert();
    /* if(this.showGrid==1)
     setTimeout( () => {
    this.router.navigateByUrl('/Grid/Governate');

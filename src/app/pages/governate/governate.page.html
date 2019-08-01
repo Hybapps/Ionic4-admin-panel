@@ -4,7 +4,22 @@
   <h3>{{title| translate}}</h3>
   <form class="admin-form ion-padding" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <ion-row>
-      <ion-col size-md="6" size="6">
+
+        <ion-col size-md="12" size="12">
+            <ion-item>
+              <ion-label position="stacked">{{'country' | translate}}</ion-label>
+             
+                <ionic-selectable
+                item-content
+                [canSearch]="true"
+                formControlName="country"
+                itemValueField="id"
+                itemTextField="name_en"
+                [items]="countries">
+              </ionic-selectable>
+            </ion-item>
+          </ion-col>
+      <ion-col size-md="12" size="12">
         <ion-item>
           <ion-label position="stacked">{{'name' | translate}} 
             <span>*</span>
@@ -16,9 +31,19 @@
           </div>
         </ion-item>
       </ion-col>
+      <ion-col size-md="12" size="12">
+        <ion-item>
+          <ion-label position="stacked">{{'status' | translate}} 
+            <span>*</span>
+          </ion-label>
+
+          <ion-checkbox color="dark" id="options" name='options' class="form-control" formControlName="options"  ></ion-checkbox>
+
+        </ion-item>
+      </ion-col>
     </ion-row>
 
-    <ion-list radio-group    >
+   <!-- <ion-list radio-group    >
       <ion-radio-group>
         <ion-list-header>{{'status' | translate}}</ion-list-header>
         
@@ -39,7 +64,7 @@
         </ion-item>
        
       </ion-radio-group>
-    </ion-list>
+    </ion-list>-->
     <ion-button class="submit-btn " *ngIf="!id" type="submit" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
     <ion-button class="submit-btn " *ngIf="!id" type="submit" (click)="showGrid=1" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
     <ion-button class="submit-btn " *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>

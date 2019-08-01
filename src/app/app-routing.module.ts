@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: 'Stages', loadChildren: './pages/stages/stages.module#StagesPageModule' },
   { path: 'Grades', loadChildren: './pages/grades/grades.module#GradesPageModule' },
   { path: 'Semistars', loadChildren: './pages/semistars/semistars.module#SemistarsPageModule' },*/
-  { path: 'Subjects', loadChildren: './pages/subjects/subjects.module#SubjectsPageModule' },
+  { path: 'Cities', loadChildren: './pages/cities/cities.module#CitiesPageModule' },
   //{ path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
 /*{ path: 'addmodal', loadChildren: './modal/addmodal/addmodal.module#AddmodalPageModule' },
 */

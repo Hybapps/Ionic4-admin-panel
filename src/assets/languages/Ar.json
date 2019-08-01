@@ -71,5 +71,13 @@
   "langPrivate":"لغات خاص",
   "Video":"فيديو",
   "free":"مجاني",
-  "unfree":"غير مجاني"
+  "unfree":"غير مجاني",
+  "Question":"السؤال",
+  "Answer":"الجواب",
+  "QuestionBank":" بنك الأسئلة",
+  "please_enter_email":"من فضل ادخل بريدك الالكتروني",
+  "reset_password":"استعادة كلمة المرور",
+  "registered_with_us":"المسجل معنا",
+  "send":"ارسل",
+  "email":"البريد الالكتروني"
 }

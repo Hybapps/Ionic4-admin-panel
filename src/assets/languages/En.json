@@ -71,6 +71,14 @@
   "langPrivate":"Language Public",
   "Video":"Video",
   "free":"Free",
-  "unfree":"Un free"
+  "unfree":"Un free",
+  "Question":"Question",
+  "Answer":"Answer",
+  "QuestionBank":"Question bank",
+  "please_enter_email":"Please enter your E-mail",
+  "reset_password":"Reset Your Password",
+  "registered_with_us":"Registered with us",
+  "send":"Send",
+  "email":"E-mail"
 }
 

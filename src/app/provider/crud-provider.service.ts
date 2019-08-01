@@ -11,7 +11,7 @@ import { HttpConfigInterceptor } from './httpConfig.interceptor';
 })
 export class CrudProviderService {
   //(private nativehttp: HTTP,
-  public ApiUrl = 'http://209.188.90.190/~ashal/api/v1/crud/';
+  public ApiUrl = 'http://ionicadmin.hybapps.com/api/v1/crud/';
   public headers;
   public headers_options;
   public Uheaders;
@@ -77,66 +77,17 @@ export class CrudProviderService {
    */
    list(table,page,data,itemArr)
    {
-     //http://209.188.90.190/~ashal/api/v1/crud/get/governments/0
      let items=itemArr;
      console.log(items)
      let url=this.ApiUrl+'get/'+table+'/'+page;
      console.log(url)
       if(data==''){
            return this.http.get(url,this.headers_options)
-          /*     .subscribe(result => {
-
-                this.page=parseInt(page);
-                this.currentPage=parseInt(page)+1;
-                  if(page==0)
-                    this.allpages=Math.ceil(parseInt(result['allrowsCount'])/10);
-                   console.log('Page =>'+page+' All =>'+this.allpages) ;
-                console.log(result);
-              if(itemArr!='')
-              {
-                this.returnData[itemArr]=result['data'];
-                console.log(this.returnData)
-              }else{
-                  if(page==0)
-                    this.listData=result['data'];
-                  else {//this.listData.push(result['data']) 
-                    for(let i=0;i<result['data'].length;i++)
-                      this.listData.push(result['data'][i])
-                  }
-              }
-              console.log(this.listData)
-            },err => {
-              console.log("ERROR!: ", url);
-          });  */
+         
       }else{
         let dbdata=data;//{whereStatement : data ,page:0}
        return this.http.post(url,dbdata,this.headers_options)
-      /*   .subscribe(result => {
-          this.page=parseInt(page);
-          this.currentPage=parseInt(page)+1;
-          if(page==0)
-          this.allpages=Math.ceil(parseInt(result['allrowsCount'])/10);
-         console.log('Page =>'+page+' All =>'+this.allpages) ;
-          console.log(result);
-
-          if (itemArr != '') {
-            this.returnData[itemArr] = result['data'];
-            console.log(this.returnData)
-          } else {
-            if (page == 0)
-              this.listData = result['data'];
-            else {//this.listData.push(result['data']) 
-              for (let i = 0; i < result['data'].length; i++)
-                this.listData.push(result['data'][i])
-            }
-          }
-          console.log(this.listData)
-        }, err => {
-          console.log("ERROR!: ", url);
-        });
-    }
-  }
-*/
+      
 }
    }
 
@@ -154,12 +105,7 @@ export class CrudProviderService {
       let url=this.ApiUrl+'add/'+table;
       console.log(url)
     return  this.http.post(url,data,this.headers_options)
-      /*    .subscribe(result => {
-            console.log(result);
-          
-          },err => {
-            console.log("ERROR!: ", url);
-          });  */
+     
    }
     /***********Update data In table*********************
        * table =>Table Name
@@ -193,19 +139,12 @@ export class CrudProviderService {
       let url=this.ApiUrl+'delete/'+table+'/'+col+'/'+id;
       console.log(url)
       return this.http.delete(url,this.headers_options)
-   /*    .subscribe(result => {
-        console.log(result);
-        this.list(table, '0', '', '')
-      }, err => {
-        console.log("ERROR!: ", url);
-      });  */
+   
    }
 
    /*********Upload Files */
    UploadFiles(Files)
    {
-
-
     let url=this.ApiUrl+'upload';
     console.log(url)
     return this.http.post(url,Files,this.headers_Uoptions)   }

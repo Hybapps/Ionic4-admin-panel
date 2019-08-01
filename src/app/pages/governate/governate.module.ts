@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 import { GovernatePage } from './governate.page';
 //import { FormPage } from './form/form.page';
@@ -15,7 +16,7 @@ import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 
 @NgModule({
   imports: [
-    CommonModule,
+    CommonModule,IonicSelectableModule,
     IonicModule,
     Ng2FilterPipeModule,
     FormsModule,
