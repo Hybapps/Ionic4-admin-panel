@@ -42,50 +42,22 @@ export class GridPage {
   currentPage;
   allpages;
   pageTitle;
+  uploadAllow;homeWorkAllow;
+  whereCond;
  // searchControl = new FormControl();
 
   constructor(public popoverController: PopoverController,public global: GlobalService,public crud: CrudProviderService,private http: HttpClient,private route: ActivatedRoute,private router: Router,public translate: TranslateService) {
-   
-   
-   console.log( "URL =>"+this.router.url)//url of routing
-   let mode=this.router.url.replace(/\/Grid\//g, '')// remove forward slash
-   let parmeter=mode.replace(/\//g, '')
-   console.log("Mode="+mode)
-   console.log("parmeter="+parmeter)
-   var json; 
-   this.global.activeMenu=parmeter;
- this.http.get('./assets/gridData/data.json').subscribe(data => {
-        json = data;
-        console.log(data[parmeter])
-        this.pk=data[parmeter][0].pk;
-        this.formUrl=data[parmeter][0].formUrl;
-        this.table=data[parmeter][0].table;
-        this.Join=data[parmeter][0].join;
-        this.GridCols=data[parmeter][0].GridCols;
-        this.activeCol=data[parmeter][0].activeCol; 
-        this.global.activeitem=data[parmeter][0].activeitem;
-        this.pageTitle=data[parmeter][0].title;
-        this.sendQuery={joinTables:this.Join,page:0}
-        this.crud.list(this.table,'0',this.sendQuery,'').subscribe(result=>{
-          console.log(result);
-          this.listData=result['data'];
-          this.page=0;
-          this.currentPage=this.page+1;
-          
-              this.allpages=Math.ceil(parseInt(result['allrowsCount'])/10);
-             console.log('Page =>'+this.page+' All =>'+this.allpages) ;
-        });
-          console.log(this.listData);
-    });
-
+   if(this.table)
+    this.getGridData();
+  
+ 
     
   //  this.GridCols=[{name:'name',search:1,sortItem:0,'name_indb':"schoolName"+global.lang,type:'text',showVal:"govName"+global.lang},{name:'Governaments',search:1,sortItem:1,'name_indb':"govName"+global.lang,type:'text',showVal:"govName"+global.lang},{name:'Type',search:1,sortItem:1,'name_indb':"schoolType",type:'text',showVal:"schoolType"},{name:'status',search:0,sortItem:1,'name_indb':"schoolActive",type:"boolean",showVal:{0:'inactive',1:'active'}}]
   }
   ngOnInit() {
    
     setTimeout( () => {
-     
-      
+      if(this.table)  this.getGridData();
       this.translate.get(this.pageTitle).subscribe((res: string) => {           
         this.global.title = res;
          });
@@ -97,7 +69,48 @@ export class GridPage {
 
    
   }
- 
+  ionViewWillEnter()
+  {
+    console.log( "URL =>"+this.router.url)//url of routing
+    let mode=this.router.url.replace(/\/Grid\//g, '')// remove forward slash
+    let parmeter=mode.replace(/\//g, '')
+    console.log("Mode="+mode)
+    console.log("parmeter="+parmeter)
+    var json; 
+    this.global.activeMenu=parmeter;
+    this.http.get('./assets/gridData/data.json').subscribe(data => {
+      json = data;
+      console.log(data[parmeter])
+      this.pk=data[parmeter][0].pk;
+      this.formUrl=data[parmeter][0].formUrl;
+      this.table=data[parmeter][0].table;
+      this.Join=data[parmeter][0].join;
+      this.GridCols=data[parmeter][0].GridCols;
+      this.activeCol=data[parmeter][0].activeCol; 
+      this.global.activeitem=data[parmeter][0].activeitem;
+      this.pageTitle=data[parmeter][0].title;
+      this.uploadAllow=data[parmeter][0].Upload;
+      this.homeWorkAllow=data[parmeter][0].homeWork;
+      this.whereCond=data[parmeter][0].where;
+      console.log('Table =>'+this.table+" Join =>"+this.Join)
+      
+     this.getGridData();
+  });
+
+  }
+  getGridData()
+  {this.sendQuery={joinTables:this.Join,page:0,whereStatement:this.whereCond}
+    this.crud.list(this.table,'0',this.sendQuery,'').subscribe(result=>{
+      console.log(result);
+      this.listData=result['data'];
+      this.page=0;
+      this.currentPage=this.page+1;
+      
+          this.allpages=Math.ceil(parseInt(result['allrowsCount'])/10);
+         console.log('Page =>'+this.page+' All =>'+this.allpages) ;
+    });
+      console.log(this.listData)
+  }
   doInfinite() {
     this.page=this.page+1;
   
@@ -173,7 +186,7 @@ console.log(data)
       const popover = await this.popoverController.create({
         component: ActionPage,
         event: ev,
-        componentProps:{id:this.filterID,table:this.table,'col':this.pk,editLink:this.formUrl,'activeCol':this.activeCol,'activeVal':this.activeVal},
+        componentProps:{id:this.filterID,table:this.table,'col':this.pk,editLink:this.formUrl,'activeCol':this.activeCol,'activeVal':this.activeVal,'UploadAllow':this.uploadAllow,homeWorkAllow:this.homeWorkAllow},
         showBackdrop: false,
         cssClass: "action-popover",
       });

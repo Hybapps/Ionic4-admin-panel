@@ -73,19 +73,13 @@ export class CitiesPage implements OnInit {
     this.translate.get(this.title).subscribe((res: string) => {           
       this.global.title = res;
        });
-       let countryQuery={whereStatement:"status=1",pageSize:'-1'};
-
-           this.crud.list('countries','-1',countryQuery,'').subscribe(result=>{
-            this.countries=result['data'];
-            this.getGov(this.countries[0].id)
-            console.log(this.countries)
-           });
+      
     this.global.activeitem = 0;
    
    
     this.buildForm();
  
-   // this.crud.list('subjects', '0', '', '');
+   // this.crud.list('subjects', '0', '', ''); 
     let sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       if (this.id && this.id != 'undefined' && this.id > 0) {
@@ -94,13 +88,23 @@ export class CitiesPage implements OnInit {
         console.log(sendQ)
         this.crud.list(this.table, '0', sendQ, '').subscribe(results=>{
           this.listData=results['data'];
-          this.buildFormModify();
+          console.log(this.listData)
+
+          this.getGov(this.listData[0].cityCountry)
+        //  this.buildFormModify();
         });
        
       }
 
     });
+    let countryQuery={whereStatement:"status=1",pageSize:'-1'};
 
+    this.crud.list('countries','-1',countryQuery,'').subscribe(result=>{
+     this.countries=result['data'];
+     if(!this.id)
+     this.getGov(this.countries[0].id)
+     console.log(this.countries)
+    });
   }
 /****For Upload  */
 public uploader: FileUploader = new FileUploader({url: URL,
@@ -160,7 +164,11 @@ public uploader: FileUploader = new FileUploader({url: URL,
 
            this.crud.list('governments','-1',govQuery,'').subscribe(result=>{
             this.govs=result['data'];
-            console.log(this.govs)
+            console.log(this.govs);
+            if(this.id)
+           { console.log('ID =>'+this.id)
+           this.buildFormModify();
+           }
            });
   }
   buildForm() {
@@ -187,14 +195,16 @@ public uploader: FileUploader = new FileUploader({url: URL,
     {
       return filter.id==item.cityCountry;
     })
-    let govItem = this.govs.filter((filter) =>
-    {
-      return filter.id==item.cityGov;
+    let govItem = this.govs.filter((filter2) =>
+    {console.log(filter2)
+      return filter2.govId == item.cityGov;
     })
+    console.log(countryItem);
+    console.log(govItem)
     this.myForm = this.fm.group({
       name: [item.cityNameAr, Validators.required],
-      country: [countryItem, Validators.required],
-      gov: [govItem, Validators.required],
+      country: [countryItem[0], Validators.required],
+      gov: [govItem[0], Validators.required],
       options: [item.cityActive, Validators.required]
     });
     this.myFile=item.cityAttach;

@@ -33,15 +33,19 @@
 
       <ion-col size-md="6" size="12">
         <ion-item> 
-          <ion-label position="stacked">{{'governments' | translate}}</ion-label>
-          <ionic-selectable
+          <ion-label position="stacked">{{'Governament' | translate}}</ion-label>
+          <ion-select  placeholder="{{'select' | translate}}"  formControlName="gov"  okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}" >
+            <ion-select-option value="{{item.govId}}" ngValue="item.govId" *ngFor="let item of govs " >{{item.govNameAr}}</ion-select-option>
+  
+        </ion-select>
+        <!--   <ionic-selectable
           item-content
           [canSearch]="true"
           formControlName="gov"
           itemValueField="govId"
           itemTextField="govNameEn"
-          [items]="govs"> </ionic-selectable>
-        </ion-item>
+          [items]="govs"> </ionic-selectable>-->
+        </ion-item> 
       </ion-col>
       
         <ion-col size="12">

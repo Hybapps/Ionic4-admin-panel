@@ -93,7 +93,7 @@
         "join": "cities INNER JOIN governments ON govId=cityGov",
         "where":"",
         "requestFields":"*",
-        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"cityNameAr","type":"text","showVal":"cityNameAr"},{"name":"governement","search":1,"sortItem":1,"name_indb":"govNameAr","type":"text","showVal":"govNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"cityActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"cityNameAr","type":"text","showVal":"cityNameAr"},{"name":"Governament","search":1,"sortItem":1,"name_indb":"govNameAr","type":"text","showVal":"govNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"cityActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
         "Upload":"1",
         "homeWork":"0",
         "activeCol":"",

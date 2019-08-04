@@ -2,10 +2,10 @@
  
   <ion-toolbar class="ion-no-padding">
     <ion-row class="search-filter">
-      <ion-col size-md="3" size="3">
+      <ion-col size-sm="4" size="12">
         <ion-searchbar placeholder="{{'search' | translate}}" #searchInput [(ngModel)]="search.q"  (ionBlur)="searchGrid($event)"></ion-searchbar>
       </ion-col>
-      <ion-col offset-md="2" size-md="3" size="4">
+      <ion-col offset-sm="2" size-sm="4" size="6">
         <ion-item lines="none">
           <ion-label>{{'Sort' | translate}}</ion-label>
           <ion-select #sortselect placeholder="{{'select' | translate}}"  [(ngModel)]="sort.q" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}" (ionChange)="sortItem()">
@@ -24,7 +24,7 @@
           </ion-select>
         </ion-item>
       </ion-col> -->
-      <ion-col size-md="1" size="1" class="page-num text-center">
+      <ion-col size-sm="2" size="6" class="page-num text-center">
         <span>{{'page' | translate}}: {{currentPage}}/{{allpages}}</span>
       </ion-col>
     </ion-row>
