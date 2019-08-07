@@ -13,7 +13,8 @@ import { Storage } from '@ionic/storage';
 }) 
 export class AppComponent {
   shownGroup;
-  public appPages = [
+  public appPages=[];
+  public MenuPages = [
     {
       title: 'Generalsettings', icon: 'home', arrow: 'ios-arrow-forward',
       sublist: [{ title: 'Governaments', url: '/Grid/Governate' },{ title: 'Cities', url: '/Grid/Cities' }]
@@ -33,75 +34,10 @@ export class AppComponent {
     public storage: Storage
   ) {
     console.log(this.appPages)
-    this.global.pages=this.appPages;
-    if(this.global.loginArr)
-    {
-      let priv=this.global.loginArr.Privillage;
-      /*for(let a=0;a<this.appPages.length;a++){
-        for(let i=0;i<priv.length;i++)
-        {
-          if(this.appPages[a].title==priv[i].name)
-          {
-            console.log(this.appPages[a].title)
-          }
-        }
-     }*/
-let privPages=this.appPages;
-let i=0;
-var pages=[];
-     for (const item of privPages) {
-      if(item.sublist)
-      {var hasSup=[];
-        for(let sub of item.sublist)
-        {
-          for(let page of priv)
-          {
-            if(page.name==sub.title)
-            {
-              if(page.view===true || page.view==1|| page.add===true || page.add==1)
-              {hasSup.push(sub);
-              console.log(page.view);
-              console.log('sub');
-              i++;
-              }
-            }
-          }
-         /* this.appPage.push({name:sub.title,add:"1",
-          view:'1',
-          edit:'1',
-          delete:'1'});*/
-         // i++;
-        }
-        /*{
-      title: 'Generalsettings', icon: 'home', arrow: 'ios-arrow-forward',
-      sublist: [{ title: 'Governaments', url: '/Grid/Governate' },{ title: 'Cities', url: '/Grid/Cities' }]
-    }*/
-        let myMenu={title:item.title,icon:item.icon,arrow:item.arrow,sublist:hasSup};
-        pages.push(myMenu)
-      }else{
-        for(let page of priv)
-          {
-            if(page.name==item.title)
-            {
-              if(page.view===true || page.view==1 || page.add===true || page.add==1){
-                pages.push(item);
-              console.log(page);
-              console.log('Item');
-              i++;
-            }
-            }
-          }
-      /*  this.appPage.push({name:item.title,
-        add:'1',
-        view:'1',
-        edit:'1',
-        delete:'1'});*/
-      }
-      //  console.log( item);
-    }
-    }
-    console.log(pages);
-    this.appPages=pages;
+    this.global.pages=this.MenuPages;
+    console.log(this.MenuPages)
+    /*else*/ this.appPages=this.MenuPages;
+   
     //this.global.activeitem = 0;
     console.log("ActiveLink =>"+this.appPages[this.global.activeitem]);
     this.toggleDetails(this.appPages[this.global.activeitem]);
@@ -148,7 +84,64 @@ var pages=[];
     }
 
   }
-
+  ngOnInit()
+  {
+      console.log('Init')
+      if(this.global.loginArr)
+    {
+      let priv=this.global.loginArr.Privillage;
+     
+      let privPages=this.appPages;
+      let i=0;
+      var pages=[];
+     for (const item of privPages) {
+      if(item.sublist)
+      {var hasSup=[];
+        for(let sub of item.sublist)
+        {
+          for(let page of priv)
+          {
+            if(page.name==sub.title)
+            {  console.log(page.view);console.log(page.add);
+              if((page.view == true || page.view==1)|| (page.add== true || page.add==1))
+              {hasSup.push(sub);
+              console.log(page.view);
+              console.log('sub');
+              i++;
+              }
+            }
+          }
+        
+        }
+        if(hasSup.length>0){
+          let myMenu={title:item.title,icon:item.icon,arrow:item.arrow,sublist:hasSup};
+          pages.push(myMenu)
+        }
+      }else{
+        for(let page of priv)
+          {
+            if(page.name==item.title)
+            {
+              if(page.view==true || page.view==1 || page.add==true || page.add==1){
+                pages.push(item);
+              console.log(page);
+              console.log('Item');
+              i++;
+            }
+            }
+          }
+      
+      }
+    }
+    console.log(pages);
+    this.appPages=pages;
+    }
+      console.log('Init Enter')
+        console.log(this.appPages)
+  }
+  ionViewWillEnter()
+  {
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {
