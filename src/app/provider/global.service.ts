@@ -18,8 +18,36 @@ export class GlobalService {
   Dir;
   activeitem=0;
   activeMenu='home';
+  pages:any[]=[];
+  loginArr:any={adminId:'',adminName:'',adminType:'',Privillage:'',lastVisit:''}
   private htmlRoot = document.documentElement;
-  constructor(public popoverController: PopoverController, public translate: TranslateService,public router: Router, public menu: MenuController, public storage: Storage) { }
+  constructor(public popoverController: PopoverController, public translate: TranslateService,public router: Router, public menu: MenuController, public storage: Storage) { 
+    console.log(this.pages)
+    let loginId=window.localStorage.getItem('adminId');
+    if(loginId && loginId!==undefined  && loginId!==null && typeof loginId !=undefined)
+      {
+        let subject=window.localStorage.getItem('Privillage').split(',');
+      var privArr=[];
+      for(let i=0;i<=subject.length-1;i++)
+      {console.log(i)
+        let priv=subject[i].split('-');
+        privArr.push({name:priv[0],add:priv[1],
+        view:priv[2],
+        edit:priv[3],
+        delete:priv[4]});
+      } 
+        this.loginArr={adminId:loginId,adminName:window.localStorage.getItem('adminName'),adminType:window.localStorage.getItem('adminType'),Privillage:privArr,lastVisit:window.localStorage.getItem('lastVisit')}
+
+        console.log(this.loginArr.Privillage)
+
+        this.menu.enable(true, 'left');
+        this.menu.enable(false, 'right');
+        if (this.lang === 'Ar') {
+          this.menu.enable(true, 'right');
+          this.menu.enable(false, 'left'); 
+        }
+      }
+  }
 
   
   

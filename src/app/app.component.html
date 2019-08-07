@@ -10,7 +10,8 @@
         </ion-menu-toggle>
       </ion-buttons>
       <ion-title>
-        {{global.title}}
+              {{global.title}} <!--{{global.loginArr.Privillage[0].name}}-->
+
       </ion-title> 
       <ion-buttons slot="end">
         <ion-button (click)="global.languagePopover($event)">
@@ -31,18 +32,24 @@
     <ion-menu side="start" menuId="left"> 
       <ion-content>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let item of appPages; let i = index">
-            <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none">
-              <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
-              <ion-label>
-                {{item.title| translate}}
-              </ion-label>
-              <ion-icon color="light" slot="end" [name]="item.arrow"></ion-icon>
-            </ion-item>
-            <div *ngIf="isGroupShown(item)" class="sub-list">
-              <p [routerLink]="[p.url]" *ngFor="let p of item.sublist">{{p.title | translate}}</p>
-            </div>
+          
+          <ion-menu-toggle auto-hide="false" *ngFor="let item of appPages; let i = index" >
+            <!--   <p *ngFor="let priv of global.Privillage; let a=index" > {{priv.name}} {{priv.view}}
+                <span *ngIf="priv.name==item.title && ( priv.view || priv.view==1)"> -->
+                    <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none">
+                      <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
+                      <ion-label>
+                        {{item.title| translate}}
+                      </ion-label>
+                      <ion-icon color="light" slot="end" [name]="item.arrow"></ion-icon>
+                    </ion-item>
+                    <div *ngIf="isGroupShown(item)" class="sub-list">
+                      <p [routerLink]="[p.url]" *ngFor="let p of item.sublist">{{p.title | translate}}</p>
+                    </div>
+              <!--   </span>
+            </p> -->
           </ion-menu-toggle>
+       
         </ion-list>
       </ion-content>
       
@@ -52,6 +59,9 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let item of appPages; let i = index">
+            <!--   <p *ngFor="let priv of global.Privillage; " >{{priv.name}} {{priv.view}}
+                  <span *ngIf="priv.name==item.title && ( priv.view || priv.view==1)"> -->
+              
             <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none" >
               <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
               <ion-label>
@@ -63,6 +73,7 @@
               <!-- class="active"  -->
               <p [routerLink]="[p.url]" *ngFor="let p of item.sublist" routerDirection="root">{{p.title | translate}}</p>
             </div>
+           <!--  </span></p> -->
           </ion-menu-toggle>
         </ion-list>
       </ion-content>

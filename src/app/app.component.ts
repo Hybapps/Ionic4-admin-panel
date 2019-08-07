@@ -17,24 +17,10 @@ export class AppComponent {
     {
       title: 'Generalsettings', icon: 'home', arrow: 'ios-arrow-forward',
       sublist: [{ title: 'Governaments', url: '/Grid/Governate' },{ title: 'Cities', url: '/Grid/Cities' }]
-    }/*,
-    {
-      title: 'Lessons', icon: 'home', arrow: 'ios-arrow-forward',
-      sublist: [ { title: 'Units', url: '/Grid/Units' },{title:'Lessons',url:'/Grid/Lessons'}]
     },
     { title: 'statistics', url: '/statistics', icon: 'stats' },
-    {
-      title: 'dashboard', icon: 'home', arrow: 'ios-arrow-forward',
-      sublist: [{ title: 'dashboard', url: '/home' }, { title: 'dashboard', url: '/home' }]
-    },
-    { title: 'list', url: '/list', icon: 'list' },
-    {
-      title: 'tables', icon: 'grid', arrow: 'ios-arrow-forward',
-      sublist: [{ title: 'regular', url: '/list' }, { title: 'smart_table', url: '/list' }]
-    },
-    { title: 'settings', url: '/home', icon: 'settings' },
-    { title: 'Generalsettings', url: '/Grid/Test', icon: 'settings' }
-    */
+    { title: 'Admins', url: '/Grid/Admins', icon: 'stats' }
+ 
   ];
   constructor(
     private platform: Platform,
@@ -46,11 +32,80 @@ export class AppComponent {
     public menu: MenuController,
     public storage: Storage
   ) {
+    console.log(this.appPages)
+    this.global.pages=this.appPages;
+    if(this.global.loginArr)
+    {
+      let priv=this.global.loginArr.Privillage;
+      /*for(let a=0;a<this.appPages.length;a++){
+        for(let i=0;i<priv.length;i++)
+        {
+          if(this.appPages[a].title==priv[i].name)
+          {
+            console.log(this.appPages[a].title)
+          }
+        }
+     }*/
+let privPages=this.appPages;
+let i=0;
+var pages=[];
+     for (const item of privPages) {
+      if(item.sublist)
+      {var hasSup=[];
+        for(let sub of item.sublist)
+        {
+          for(let page of priv)
+          {
+            if(page.name==sub.title)
+            {
+              if(page.view===true || page.view==1|| page.add===true || page.add==1)
+              {hasSup.push(sub);
+              console.log(page.view);
+              console.log('sub');
+              i++;
+              }
+            }
+          }
+         /* this.appPage.push({name:sub.title,add:"1",
+          view:'1',
+          edit:'1',
+          delete:'1'});*/
+         // i++;
+        }
+        /*{
+      title: 'Generalsettings', icon: 'home', arrow: 'ios-arrow-forward',
+      sublist: [{ title: 'Governaments', url: '/Grid/Governate' },{ title: 'Cities', url: '/Grid/Cities' }]
+    }*/
+        let myMenu={title:item.title,icon:item.icon,arrow:item.arrow,sublist:hasSup};
+        pages.push(myMenu)
+      }else{
+        for(let page of priv)
+          {
+            if(page.name==item.title)
+            {
+              if(page.view===true || page.view==1 || page.add===true || page.add==1){
+                pages.push(item);
+              console.log(page);
+              console.log('Item');
+              i++;
+            }
+            }
+          }
+      /*  this.appPage.push({name:item.title,
+        add:'1',
+        view:'1',
+        edit:'1',
+        delete:'1'});*/
+      }
+      //  console.log( item);
+    }
+    }
+    console.log(pages);
+    this.appPages=pages;
     //this.global.activeitem = 0;
     console.log("ActiveLink =>"+this.appPages[this.global.activeitem]);
     this.toggleDetails(this.appPages[this.global.activeitem]);
     this.initializeApp();
-
     this.storage.get('lang').then((val) => {
       if (val != null) {
         if (val === 'En') {

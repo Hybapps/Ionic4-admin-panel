@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./action.page.scss'],
 })
 export class ActionPage implements OnInit {
-  x=111;
+  x:any='111';
   id: any;
   table:any;
   col:any;
@@ -76,6 +76,7 @@ export class ActionPage implements OnInit {
           text: this.Okay,
           handler: () => {
             console.log('Confirm Okay');
+            this.x='del';
             this.crud.Del(this.table,this.col,this.id).subscribe(data=>{
               console.log(data)
             });
@@ -135,7 +136,7 @@ export class ActionPage implements OnInit {
   }
 
   EditItem()
-  {
+  {this.x='edit';
     console.log('route =>'+this.editLink+'  Id=>'+this.id)
     this.close();
     this.router.navigate([this.editLink,this.id]);

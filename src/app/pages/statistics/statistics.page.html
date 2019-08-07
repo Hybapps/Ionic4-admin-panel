@@ -1,0 +1,36 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-searchbar class="admin-search" placeholder="{{'search' | translate}}"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="global.languagePopover($event)">
+            <fa-icon [icon]="['far', 'flag']"></fa-icon>
+      </ion-button> 
+      <ion-button (click)="global.notificationPopover($event)">
+          <fa-icon [icon]="['far', 'bell']"></fa-icon>
+      </ion-button>
+      <ion-button (click)="global.listPopover($event)">
+          <fa-icon [icon]="['far', 'user']"></fa-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+   -->
+<ion-content padding>
+  <ion-row class="charts">
+    <ion-col size-md="6" size="12">
+      <div>
+        <h3>{{'statistics' | translate}}</h3>
+        <google-chart [data]="ColumnChartData"></google-chart>             
+      </div>
+    </ion-col>   
+    <ion-col size-md="6" size="12">
+      <div>
+        <h3>{{'statistics' | translate}}</h3>
+        <google-chart [data]="pieChartData"></google-chart>  
+      </div>   
+      </ion-col>   
+  </ion-row>
+</ion-content>

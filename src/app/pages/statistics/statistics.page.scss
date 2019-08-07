@@ -1,0 +1,16 @@
+.charts{
+    margin: 5px -5px;
+    ion-col{
+      div{
+        padding: 10px;
+        background: #fff;
+        box-shadow:0 15px 32px 0 rgba(0,0,0,.06);
+        border-radius: 7px;
+        overflow: hidden;
+        h3{
+          font-size: 1.3rem;
+          margin: 0;
+        }
+      }
+    }
+  }

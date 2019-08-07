@@ -71,7 +71,7 @@ export class CrudProviderService {
           whereStatement: govActive=1 (string contain where statement)
           pageSize:10 ( if we want to change page size)
           joinTables:levels inner join questions ( join tables if exists)
-          joinOn: levels.id=questions.levelId ( join condition)
+         // joinOn: levels.id=questions.levelId ( join condition)
           requestFields: questions.*  (if we want custom columns name)
         }
    */

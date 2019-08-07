@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="container">
+    <div class="container"> 
             <img class="top-cir" src="./assets/imgs/01.png">
             <img class="bottom-cir" src="./assets/imgs/02.png">
             <ion-row class="login-content">
@@ -23,15 +23,15 @@
                         </ion-select>
                     </ion-item> -->
                     
-                    <form>
+                    <form [formGroup]="myForm">
                         <ion-list>
                             <ion-item>
                                 <ion-icon name="person" slot="start"></ion-icon>                        
-                                <ion-input placeholder='{{ "username" | translate }}'></ion-input>
+                                <ion-input  formControlName="name" placeholder='{{ "username" | translate }}' ></ion-input>
                             </ion-item>
                             <ion-item>
                                 <ion-icon name="lock" slot="start"></ion-icon>                        
-                                <ion-input placeholder='{{ "password" | translate }}'></ion-input>
+                                <ion-input type="password" formControlName="pass" placeholder='{{ "password" | translate }}' ></ion-input>
                             </ion-item>
                         </ion-list>    
         
@@ -43,13 +43,13 @@
                                 </ion-item>
                             </ion-col>
                             <ion-col>
-                                <ion-button color="secondary" fill="clear" size="small">
+                                <ion-button color="secondary" fill="clear" size="small" (click)="forgot_password()">
                                     {{ "forgot_password" | translate }}
                                 </ion-button>
                             </ion-col>
                         </ion-row>
                         <div class="ion-text-center">
-                            <ion-button (click)="loginAdmin()" class="login-btn" routerLink="/statistics"  shape="round">{{ "sign_in" | translate }}</ion-button>
+                            <ion-button (click)="loginAdmin()" class="login-btn"   shape="round">{{ "sign_in" | translate }}</ion-button>
                             <p class="powered-by">{{ "powered_by" | translate }} <span>Ashal</span></p>
                         </div>
                     </form>

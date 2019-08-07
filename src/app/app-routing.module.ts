@@ -15,36 +15,21 @@ const routes: Routes = [
     path: 'Grid',
     loadChildren: './pages/grid/grid.module#GridageModule'
   },
-  /*{
-    path: 'Schools',
-    loadChildren: './pages/schools/schools.module#SchoolsPageModule'
-  },
   {
-    path: 'Units',
-    loadChildren: './pages/units/units.module#UnitsPageModule'
+    path: 'Admins',
+    loadChildren: './pages/admins/admins.module#AdminsPageModule'
   },
-  {
-    path: 'Lessons',
-    loadChildren: './pages/lessons/lessons.module#LessonsPageModule'
-  },*/
   {
     path: 'home',
     loadChildren: './pages/home/home.module#HomePageModule'
   }, 
-  /*{
-    path: 'list',
-    loadChildren: './pages/list/list.module#ListPageModule'
-  },
-  { 
-    path: 'form', 
-    loadChildren: './pages/form/form.module#FormPageModule' 
-  },
+  
   { 
     path: 'login',
     loadChildren: './pages/login/login.module#LoginPageModule' 
   },
   { path: 'statistics', loadChildren: './pages/statistics/statistics.module#StatisticsPageModule' },
-  { path: 'Stages', loadChildren: './pages/stages/stages.module#StagesPageModule' },
+  /*{ path: 'Stages', loadChildren: './pages/stages/stages.module#StagesPageModule' },
   { path: 'Grades', loadChildren: './pages/grades/grades.module#GradesPageModule' },
   { path: 'Semistars', loadChildren: './pages/semistars/semistars.module#SemistarsPageModule' },*/
   { path: 'Cities', loadChildren: './pages/cities/cities.module#CitiesPageModule' },

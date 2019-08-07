@@ -193,6 +193,7 @@ console.log(data)
       popover.onDidDismiss()
       .then((result) => {
         console.log(result['data']); 
+        if(result['data']=='del'){
         this.sendQuery={joinTables:this.Join,page:0}
         this.crud.list(this.table,'0',this.sendQuery,'').subscribe(result=>{
           console.log(result);
@@ -203,6 +204,7 @@ console.log(data)
               this.allpages=Math.ceil(parseInt(result['allrowsCount'])/10);
              console.log('Page =>'+this.page+' All =>'+this.allpages) ;
         });
+      }
       });
   
       return await popover.present();

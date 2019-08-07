@@ -73,70 +73,7 @@ ion-content{
             }
             
         }
-        
-        .login-form{
-            padding: 40px;
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-            .lang_btn{
-                align-self: flex-end;
-                position: absolute;
-                top: 16px;
-                margin: 0px;
-                margin-inline-start: 24px;
-                --padding-start:0px;
-                --padding-end:0px;
-                width:34px;
-                height: 34px;
-                font-family:'arabicfont' ;
-            }
-            h3{
-               color: var(--ion-color-primary);  
-            }
-            p{
-                font-size: 1.3rem;
-                margin: 0 0 10px 0;
-            }
-            ion-list{
-                padding: 20px 0 0 0;
-                ion-item{
-                    --background:rgba(var(--ion-color-medium-rgb),.15);	
-                    --border-width	: 0; 
-                    margin-bottom: 10px;
-                    --border-radius:0px;
-                    &:last-child{
-                        margin-bottom: 0;
-                    }
-                    ion-icon{
-                        color:rgba(var(--ion-color-medium-rgb),.5);	
-                        font-size: 2rem;
-                        margin: 0 10px;
-                    }
-                }
-            }
-            
-            .forgot-psw{
-                align-items: center;
-                margin-bottom: 25px;
-                ion-col{
-                    padding: 0;
-                    ion-item{
-                        --padding-end:0;
-                        --padding-start:0;
-                        font-size: 1.3rem;
-                        ion-checkbox{
-                            margin:0 10px;
-                        }
-                    }
-                    .button{
-                        text-transform: none;
-                        margin: 0;
-                        float: right;
-                    }
-                }
-            }
-        }  
+
       
         .login-btn{
             width: 180px;
