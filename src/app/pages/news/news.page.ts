@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import {Md5} from 'ts-md5/dist/md5'
 import { FileUploader , FileSelectDirective,FileLikeObject } from 'ng2-file-upload';
+import { LoadingController } from '@ionic/angular';
 
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
@@ -32,12 +33,29 @@ public myForm: FormGroup;
   usePicker;selectedImage;
   minDate;
   maxDate;
-  editorContent="My text goes here";
   public editorOptions = {
-    placeholder: "insert content..."
+   toolbar: [
+        ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+        ['blockquote', 'code-block'],
+    
+        [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+        [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+        [{ 'direction': 'rtl' }],                         // text direction
+    
+        [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+    
+        [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }]
+    
+      
+      ]
+    
   };
-  copy:any[]=[];
-  down:any[]=[];
+  
   filesAttach;
   mode=0;
   submitted = false;
@@ -53,13 +71,12 @@ public myForm: FormGroup;
   listData;
   selected:any=1;
   genderType:any=0;
- 
-  constructor(public global: GlobalService,public fm: FormBuilder, public crud: CrudProviderService, private alertController: AlertController, private route: ActivatedRoute, private router: Router, public translate: TranslateService,private file: File,private filePath: FilePath,private webview: WebView, public modalController: ModalController) { 
+  loaderToShow: any;
+  constructor(public global: GlobalService,public fm: FormBuilder, public crud: CrudProviderService, private alertController: AlertController, private route: ActivatedRoute, private router: Router, public translate: TranslateService,private file: File,private filePath: FilePath,private webview: WebView, public modalController: ModalController,public loadingController: LoadingController) { 
     /* For Upload */
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; 
       console.log('Files =>'+this.uploader.queue.length);
-    //  this.copy[this.uploader.queue.length-1]=true;
-    //  this.down[this.uploader.queue.length-1]=true;
+    console.log(this.uploader.queue)
    
     };
     this.uploader.onCancelItem=(file)=>{file.withCredentials = false;
@@ -70,25 +87,21 @@ public myForm: FormGroup;
               if(this.filesUploaded!='')this.filesUploaded+=',';
             this.filesUploaded+=result.data.fileName;
             let check =this.filesUploaded.split(',');
+            this.myFiles.push(result.data.fileName)
 
-            console.log('-----------');
-            console.log(this.uploader.queue+" ***")
-            console.log(check)
-            console.log(this.filesUploaded+"  length =>"+this.uploader.queue.length);
-            console.log('-----------');
+console.log(this.filesUploaded)
+console.log(this.myFiles)
+//this.myFiles.push(result.data.fileName)
             if(check.length==this.uploader.queue.length)
             {
                 console.log('Finish Upload')
-            // this.submitData();
-         //   this.filesAttachAdd()
+           
             }
      };
      this.uploader.onBeforeUploadItem = (file)=> {
-      // logic of connecting url with the file
-      //file.alias = 'http://localhost:3001/path/v1';
+     
   //   this.uploader.options.additionalParameter = {"folder": this.id,"requestNewFolder":'1'};
     
-     // alert(this.uploader.options);
       console.log(this.uploader.options)
       return {file};
     };
@@ -119,56 +132,7 @@ public myForm: FormGroup;
   }
 
 
-filesAttachAdd()
-{
- // if(this.mode==0)
-  var files=this.filesUploaded.split(',');
-  //  else { let lessonAttach=this.filesUploaded+','+this.myFiles;
- // var files=files=lessonAttach.split(',');
- // }
- var filesData=[];
-  for(let i=0;i<files.length;i++)
-  {
-     filesData[i]={
-      lessonAttachLesson:this.id,
-      lessonAttachMode:0,
-      lessonAttachFile:files[i],
-      lessonAttachDownload:this.down[i],
-      lessonAttachCopy:this.copy[i]
-    };
-    
-  }
-  this.crud.bulk('lessonAttach',filesData).subscribe(results=>{
-    console.log('results')
-  });
-  if(this.mode==1)//Update
-  {
-    for(let i=0;i<this.filesAttach;i++)
-   {
-        let filesData={
-          lessonAttachLesson:this.id,
-          lessonAttachMode:0,
-          lessonAttachFile:this.filesAttach[i]['lessonAttachFile'],
-          lessonAttachDownload:this.filesAttach[i]['lessonAttachDownload'],
-          lessonAttachCopy:this.filesAttach[i]['lessonAttachCopy'],
-        }
-        this.crud.Add('lessonAttach',filesData).subscribe(results=>{
-          console.log('results')
-        });
-  }
-}
-      if(this.showGrid==1)
-                  this.router.navigateByUrl('/Grid/news');
 
-            else   {if(!this.id)this.buildForm(); else  this.router.navigateByUrl('/Lessons');
-              console.log(this.uploader.queue.length)
-            for(let i=0;i<this.uploader.queue.length;i++){
-              this.uploader.queue[i].remove();
-            }
-            this.filesAttach=[];
-          }
-    //this.presentAlert();
-}
 /****For Upload  */
 public uploader: FileUploader = new FileUploader({url: URL,
   disableMultipart : false,
@@ -201,7 +165,13 @@ public uploader: FileUploader = new FileUploader({url: URL,
   ngOnInit() {
     console.log(this.id)
   
-
+    var month=this.myDate.getMonth()+1;
+    let YY=this.myDate.getFullYear();
+    if(month<9)var thismonth=('0'+month).toString();
+    else var thismonth=(month).toString();
+    this.minDate=YY+'-'+thismonth+'-01';
+    this.maxDate=YY+'-'+thismonth+'-30';
+    console.log('Min'+this.minDate+'Max =>'+this.maxDate)
     this.translate.get('sucess').subscribe((res: string) => {           
       this.alertHead = res;
         });
@@ -215,12 +185,34 @@ public uploader: FileUploader = new FileUploader({url: URL,
  
      this.buildForm();
 }
+ionViewWillEnter()
+{
+  this.showLoader()
+}
+showLoader() {
+  this.loaderToShow = this.loadingController.create({
+    message: 'Loading page please wait ....'
+  }).then((res) => {
+    res.present();
+
+    res.onDidDismiss().then((dis) => {
+      console.log('Loading dismissed!');
+    });
+  });
+  this.hideLoader();
+}
+
+hideLoader() {
+  setTimeout(() => {
+    this.loadingController.dismiss();
+  }, 2000);
+}
 buildForm()
 {
  this.myForm = this.fm.group({
    name: ['', Validators.required],
    detail: new FormControl('this is initial content'),//['this is initial content'],
-   newsDate: ['', Validators.required],
+   newsDate: [this.myDate, Validators.required],
    options: new FormControl('1')
 });
 
@@ -254,26 +246,24 @@ onSubmit() {
    newsDescAr:this.myForm.controls.detail.value,
    newsDescEn:this.myForm.controls.detail.value,
    newsActive:this.myForm.controls.options.value,
-   newsFile:this.file
+   newsFiles:this.filesUploaded
  }
 
 if(!this.id){
-  data['adminPW']=Md5.hashStr(this.myForm.controls.pass.value);
      this.crud.Add(this.table,data).subscribe(data=>{
        console.log(data)
      });
    }
 else{
-  if(this.myForm.controls.pass.value!='')
-         data['adminPW']=Md5.hashStr(this.myForm.controls.pass.value);
-   this.crud.Update(this.table,'adminId',this.id,data).subscribe(data=>{
+  
+   this.crud.Update(this.table,'newsId',this.id,data).subscribe(data=>{
      console.log(data);
    }); 
  }
  if(this.showGrid==1)
- this.router.navigateByUrl('/Grid/Admins');
+ this.router.navigateByUrl('/Grid/news');
 
-else   {if(!this.id)this.buildForm(); else this.router.navigateByUrl('/Admins');}
+else   {if(!this.id)this.buildForm(); else this.router.navigateByUrl('/news');}
 // this.presentAlert();
 
   
