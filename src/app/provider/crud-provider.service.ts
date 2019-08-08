@@ -107,6 +107,14 @@ export class CrudProviderService {
     return  this.http.post(url,data,this.headers_options)
      
    }
+
+
+   bulk(table,data)
+   {
+    let url=this.ApiUrl+'bulkAdd/'+table;
+    console.log(url)
+  return  this.http.post(url,data,this.headers_options)
+   }
     /***********Update data In table*********************
        * table =>Table Name
        * col =>col of where condition

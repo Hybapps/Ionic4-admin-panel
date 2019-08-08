@@ -20,6 +20,7 @@ export class AppComponent {
       sublist: [{ title: 'Governaments', url: '/Grid/Governate' },{ title: 'Cities', url: '/Grid/Cities' }]
     },
     { title: 'statistics', url: '/statistics', icon: 'stats' },
+    { title: 'News', url: '/Grid/news', icon: 'stats' },
     { title: 'Admins', url: '/Grid/Admins', icon: 'stats' }
  
   ];

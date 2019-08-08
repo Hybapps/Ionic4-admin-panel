@@ -19,6 +19,7 @@ import { NotificationsListPageModule } from './popover/notifications-list/notifi
 import { ListPopoverPageModule } from './popover/list-popover/list-popover.module';
 import { HttpConfigInterceptor } from './provider/httpConfig.interceptor';
 import { CrudProviderService } from './provider/crud-provider.service';
+import { QuillModule } from 'ngx-quill'
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     IonicSelectableModule,
     IonicStorageModule.forRoot(),
+    QuillModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

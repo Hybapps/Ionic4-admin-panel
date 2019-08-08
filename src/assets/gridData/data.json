@@ -1,18 +1,18 @@
 {
-  "Schools": [
+  "news": [
     {
-        "table": "schools",
-        "pk": "schoolId",
-        "title":"Schools",
-        "formUrl": "/Schools",
-        "join": "schools INNER JOIN governments ON govId=schoolGovId",
+        "table": "news",
+        "pk": "newsId",
+        "title":"News",
+        "formUrl": "/news",
+        "join": "",
         "where":"",
         "requestFields":"*",
-        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"schoolNameAr","type":"text","showVal":"govNameAr"},{"name":"Governaments","search":1,"sortItem":1,"name_indb":"govNameAr","type":"text","showVal":"govNameAr"},{"name":"Type","search":1,"sortItem":1,"name_indb":"schoolType","type":"options","showVal":"schoolType"},{"name":"status","search":0,"sortItem":1,"name_indb":"schoolActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
+        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"newsTitleAr","type":"text","showVal":"newsTitleAr"},{"name":"Details","search":1,"sortItem":1,"name_indb":"newsDescAr","type":"longText","showVal":"newsDescAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"newsActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
         "Upload":"0",
         "homeWork":"0",
-        "activeCol":"schoolActive",
-        "activeitem":0
+        "activeCol":"newsActive",
+        "activeitem":2
        
     }
 ],
@@ -80,7 +80,7 @@
         "Upload":"0",
         "homeWork":"0",
         "activeCol":"",
-        "activeitem":0
+        "activeitem":1
        
     }
 ],

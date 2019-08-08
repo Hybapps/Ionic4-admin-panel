@@ -85,14 +85,15 @@ public myForm: FormGroup;
   {
     console.log(index);
     console.log(evt)
+    if(evt.detail.checked) var check =1; else var check =0;
     if(mode=='add')
-    this.appPage[index].add=evt.detail.checked;
+      this.appPage[index].add=check;
     if(mode=='view')
-    this.appPage[index].view=evt.detail.checked;
+    this.appPage[index].view=check;
     if(mode=='edit')
-    this.appPage[index].edit=evt.detail.checked;
+    this.appPage[index].edit=check;
     if(mode=='delete')
-    this.appPage[index].delete=evt.detail.checked;
+    this.appPage[index].delete=check;
    
    /* if(mode=='copy')this.copy[index]=evt.detail.checked;
     if(mode=='down')this.down[index]=evt.detail.checked;
@@ -188,7 +189,7 @@ if(!this.id){
      });
    }
 else{
-  if(this.myForm.controls.name.value!='')
+  if(this.myForm.controls.pass.value!='')
          data['adminPW']=Md5.hashStr(this.myForm.controls.pass.value);
    this.crud.Update(this.table,'adminId',this.id,data).subscribe(data=>{
      console.log(data);

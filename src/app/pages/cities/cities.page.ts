@@ -15,7 +15,7 @@ import { Country } from '../../types';
 import { IonicSelectableComponent } from 'ionic-selectable';
 
 //import { EventEmitter } from 'events';
-const URL = 'http://209.188.90.190/~ashal/api/v1/crud/upload';
+const URL = 'http://ionicadmin.hybapps.com/api/v1/crud/upload';
 @Component({
   selector: 'app-form',
   templateUrl: './cities.page.html',
@@ -39,7 +39,7 @@ export class CitiesPage implements OnInit {
   listData;
   showGrid = 0;
   filesUploaded='';
-  imgUrl="http://209.188.90.190/~ashal/uploadFolder/original/";
+  imgUrl="http://ionicadmin.hybapps.com/uploadFolder/original/";
   myFile;
   countries;
   govs;

@@ -1,0 +1,183 @@
+<ion-content padding>
+  <h3>{{title | translate}}</h3>
+  <form class="admin-form ion-padding" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-row>
+      <ion-col size-md="12" size="12">
+        <ion-item>
+          <ion-label position="stacked">{{'Title' | translate}}
+            <span>*</span>
+          </ion-label>
+
+          <ion-input type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
+          <div *ngIf="submitted && myForm.controls.name.errors" class="invalid-feedback">
+            <div *ngIf="myForm.controls.name.errors.required"> Title is required</div>
+          </div>
+        </ion-item>
+      </ion-col>
+        <ion-col size-md="12" size="12">
+          <ion-item>
+            <ion-label position="stacked">{{'Date' | translate}} </ion-label>
+            <ion-datetime displayFormat="DD-MM-YYYY" formControlName="newsDate" pickerFormat="DD-MM-YYYY" min="{{minDate}}" max="{{maxDate}}"></ion-datetime>
+  
+           
+          </ion-item>
+          </ion-col>
+        
+          <ion-col size-md="12" size="12">
+            <ion-item>
+              <ion-label position="stacked">{{'status' | translate}} 
+                <span>*</span>
+              </ion-label>
+    
+              <ion-checkbox color="dark" id="options" name='options' class="form-control" formControlName="options"  ></ion-checkbox>
+    
+            </ion-item>
+          </ion-col>
+               
+ 
+      <ion-col size="12">
+    
+        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader"
+          class="drop-zone">
+          <p>أضف الصورة هنا ....</p>
+          <span class="or">أو</span>
+          <div class="file-input-container">
+            <label>
+              <input type="file" name="attachment[]" ng2FileSelect [uploader]="uploader" />
+              <ion-icon name="add" color="light"></ion-icon>
+            </label>
+          </div>
+        </div>
+
+      </ion-col>
+      <ion-col size="12">
+        <h2>Files: {{ uploader?.queue?.length }}</h2>
+        <ion-list>
+         <!-- <ion-item>
+            <ion-label>
+              <ion-grid no-padding class="darg_drop_list">
+                <ion-row>
+                  <ion-col size="3" size-md="4">
+                    <p>مسار الصورة</p>
+                  </ion-col>
+                  <ion-col size="3" size-md="5">
+                    <p>مسار الصورة</p>
+                  </ion-col>
+                  <ion-col size="2" size-md="1">
+                    <p>عرض</p>
+                  </ion-col>
+                  <ion-col size="2" size-md="1">
+                    <p>تحميل</p>
+                  </ion-col>
+                  <ion-col size="2" size-md="1">
+                    <p>مسح</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-label>
+          </ion-item>-->
+
+
+          <ion-reorder-group (ionItemReorder)="reorderFiles($event)" disabled="true">
+            <ion-item *ngFor="let item of uploader.queue">
+              <ion-label>
+                <ion-grid no-padding class="darg_drop_list">
+                  <ion-row>
+                    <ion-col size="6" size-md="4">
+                      <p class="img_path"><img src="{{imgUrl}}{{ item?.file?.name }}"></p>
+                    </ion-col>
+                    <!-- <ion-col size="3" size-md="5">
+                      <ion-item >
+                        <ion-input type="text"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="2" size-md="1">
+                      <ion-item class="checkbox_item">
+                        <ion-checkbox checked (ionChange)="updateObject('copy',uploader?.queue?.length -1,$event)"></ion-checkbox>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="2" size-md="1">
+                      <ion-item class="checkbox_item">
+                        <ion-checkbox  checked name="down" #down  (ionChange)="updateObject('down',uploader?.queue?.length -1,$event)"></ion-checkbox>
+                      </ion-item>
+                    </ion-col> -->
+                    <ion-col size="2" size-md="1">
+                      <ion-button type="button" (click)="item.remove()" color="primary">x</ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+          </ion-reorder-group>
+
+
+
+          <ion-reorder-group (ionItemReorder)="reorderFiles($event)" disabled="true">
+            <ion-item *ngFor="let item of filesAttach">
+              <ion-label>
+                <ion-grid no-padding class="darg_drop_list">
+                  <ion-row>
+                    <ion-col size="3" size-md="4">
+                      <p class="img_path"><img src="{{imgUrl}}{{item?.lessonAttachFile}}" width="50"/></p>
+                    </ion-col>
+                    <ion-col size="3" size-md="5">
+                      <ion-item >
+                        <ion-input type="text"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="2" size-md="1">
+                      <ion-item class="checkbox_item">
+                        <ion-checkbox [checked]="item.lessonAttachCopy==1" (ionChange)="updateAttach('copy',index,$event)"></ion-checkbox>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="2" size-md="1">
+                      <ion-item class="checkbox_item">
+                        <ion-checkbox formControlName="down" name="down" #down [checked]="item.lessonAttachDownload==1" (ionChange)="updateAttach('down',index,$event)"></ion-checkbox>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="2" size-md="1">
+
+                      <ion-button type="button"   (click)="item.remove()"  color="primary" >x</ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+          </ion-reorder-group>
+
+
+        </ion-list>
+
+  </ion-col>
+      <ion-col size="12">
+        <quill-editor  class="form-control"
+        [formControlName]="detail"
+        > </quill-editor>
+      </ion-col>
+
+  
+          
+       
+      <ion-col size="12">
+
+      
+        <ion-button class="submit-btn " *ngIf="!id" type="submit" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="!id" type="submit" (click)="showGrid=1" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="id" (click)="showGrid=1;onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+
+
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+  <!-- back button -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="global.backToGrid('Admins')">
+      <ion-icon color="light" name="ios-arrow-forward"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -23,6 +23,8 @@ export class ActionPage implements OnInit {
   cancel;
   activeCol;
   activeVal;
+  editAllow;
+  delAllow;
   constructor(public popCtrl :PopoverController,private route: ActivatedRoute, private navParams: NavParams,private alertController:AlertController,public translate: TranslateService,public crud: CrudProviderService,private router: Router) { 
     //console.log(this.navParams.data);
      
@@ -35,6 +37,8 @@ export class ActionPage implements OnInit {
     this.editLink = this.navParams.data.editLink;
     this.activeCol = this.navParams.data.activeCol;
     this.activeVal = this.navParams.data.activeVal;
+    this.editAllow=this.navParams.data.editAllow;
+    this.delAllow=this.navParams.data.delAllow;
     console.log(this.id)//DeActiveConfirmMsg
     this.translate.get('DeleteConfirm').subscribe((res: string) => {           
       this.confirmHeader = res;

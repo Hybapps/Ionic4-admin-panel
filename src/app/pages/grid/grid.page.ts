@@ -44,6 +44,7 @@ export class GridPage {
   pageTitle;
   uploadAllow;homeWorkAllow;
   whereCond;
+  addAllow=1;EditAllow=1;DelAllow=1;
  // searchControl = new FormControl();
 
   constructor(public popoverController: PopoverController,public global: GlobalService,public crud: CrudProviderService,private http: HttpClient,private route: ActivatedRoute,private router: Router,public translate: TranslateService) {
@@ -76,6 +77,8 @@ export class GridPage {
     let parmeter=mode.replace(/\//g, '')
     console.log("Mode="+mode)
     console.log("parmeter="+parmeter)
+    let priv=this.global.loginArr.Privillage;
+   
     var json; 
     this.global.activeMenu=parmeter;
     this.http.get('./assets/gridData/data.json').subscribe(data => {
@@ -93,7 +96,25 @@ export class GridPage {
       this.homeWorkAllow=data[parmeter][0].homeWork;
       this.whereCond=data[parmeter][0].where;
       console.log('Table =>'+this.table+" Join =>"+this.Join)
-      
+      for(let page of priv)
+      {
+        if(page.name.toLowerCase()==this.pageTitle.toLowerCase())
+        {
+          if(page.add===true || page.add==1)
+          {
+            this.addAllow=1;
+          }else this.addAllow=0;
+          if(page.edit===true || page.edit==1)
+          {
+            this.EditAllow=1;
+          }else this.EditAllow=0;
+
+          if(page.delete===true || page.delete==1)
+          {
+            this.DelAllow=1;
+          }else this.DelAllow=0;
+        }
+      }
      this.getGridData();
   });
 
@@ -176,6 +197,36 @@ console.log(data)
     console.log(this.searchQ)
     //this.sortselect.select.close();
   }
+  //**************** */
+  truncateString(str, len, append)
+  {
+     var newLength;
+     append = append || "";  //Optional: append a string to str after truncating. Defaults to an empty string if no value is given
+     
+     if (append.length > 0)
+      {
+        append = " "+append;  //Add a space to the beginning of the appended text
+      }
+     if (str.indexOf(' ')+append.length > len)
+     {
+         return str;   //if the first word + the appended text is too long, the function returns the original String
+     }
+     
+     str.length+append.length > len ? newLength = len-append.length : newLength = str.length; // if the length of original string and the appended string is greater than the max length, we need to truncate, otherwise, use the original string
+     
+          var tempString = str.substring(0, newLength);  //cut the string at the new length
+          tempString = tempString.replace(/\s+\S*$/, ""); //find the last space that appears before the substringed text
+  
+     
+     if (append.length > 0)
+        {
+             tempString = tempString + append;
+        }
+  
+     return tempString;
+  };
+  
+  //********************** */
     //action btn
     async actionList(ev: any,row:any) {
       console.log(row)
@@ -186,7 +237,7 @@ console.log(data)
       const popover = await this.popoverController.create({
         component: ActionPage,
         event: ev,
-        componentProps:{id:this.filterID,table:this.table,'col':this.pk,editLink:this.formUrl,'activeCol':this.activeCol,'activeVal':this.activeVal,'UploadAllow':this.uploadAllow,homeWorkAllow:this.homeWorkAllow},
+        componentProps:{id:this.filterID,table:this.table,'col':this.pk,editLink:this.formUrl,'activeCol':this.activeCol,'activeVal':this.activeVal,'UploadAllow':this.uploadAllow,homeWorkAllow:this.homeWorkAllow,editAllow:this.EditAllow,delAllow:this.DelAllow},
         showBackdrop: false,
         cssClass: "action-popover",
       });

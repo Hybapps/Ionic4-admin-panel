@@ -50,6 +50,11 @@
           <span *ngIf="val.key==col.name_indb ">{{val.value}}</span>
         </span>  
       </p>
+      <p *ngIf=" col.type=='longText'">
+        <span *ngFor="let val of item | keyvalue " >
+          <span *ngIf="val.key==col.name_indb ">{{truncateString(val.value,50,'')}}</span>
+        </span>  
+      </p>
       <p *ngIf=" col.type=='options'">
           <span *ngFor="let val of item | keyvalue " >
             <span *ngIf="val.key==col.name_indb ">{{val.value|translate}}</span>
@@ -92,13 +97,13 @@
       </ion-row>
     -->
   </ion-grid>
-
+<p *ngIf="addAllow==1">
   <ion-fab vertical="bottom" horizontal="{{global.fab}}" slot="fixed">
     <ion-fab-button color="secondary" routerLink="{{formUrl}}" routerDirection="root">
       <ion-icon color="light" name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
+</p>
   <!-- fab placed to the (vertical) center and end -->
   <ion-fab vertical="bottom" horizontal="center" slot="fixed" *ngIf="(allpages  != 1) && (allpages > currentPage)">
     <ion-fab-button (click)="doInfinite()" size="small">
