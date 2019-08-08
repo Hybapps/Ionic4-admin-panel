@@ -52,7 +52,7 @@
       </p>
       <p *ngIf=" col.type=='longText'">
         <span *ngFor="let val of item | keyvalue " >
-          <span *ngIf="val.key==col.name_indb ">{{truncateString(val.value,50,'')}}</span>
+          <span *ngIf="val.key==col.name_indb ">{{truncateString(strip_html_tags(val.value),50,'')}}</span>
         </span>  
       </p>
       <p *ngIf=" col.type=='options'">

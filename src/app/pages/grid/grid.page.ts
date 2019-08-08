@@ -70,6 +70,14 @@ export class GridPage {
 
    
   }
+  strip_html_tags(str)
+{
+   if ((str===null) || (str===''))
+       return false;
+  else
+   str = str.toString();
+  return str.replace(/<[^>]*>/g, '');
+}
   ionViewWillEnter()
   {
     console.log( "URL =>"+this.router.url)//url of routing
