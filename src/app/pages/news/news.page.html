@@ -79,30 +79,16 @@
 
 
           <ion-reorder-group (ionItemReorder)="reorderFiles($event)" disabled="true">
-            <ion-item *ngFor="let item of myFiles">
+            <ion-item *ngFor="let item of myFiles;let i=index">
               <ion-label>
                 <ion-grid no-padding class="darg_drop_list">
                   <ion-row>
                     <ion-col size="6" size-md="4">
                       <p class="img_path"><img src="{{imgUrl}}{{ item }}" width="100"></p>
                     </ion-col>
-                    <!-- <ion-col size="3" size-md="5">
-                      <ion-item >
-                        <ion-input type="text"></ion-input>
-                      </ion-item>
-                    </ion-col>
+                    
                     <ion-col size="2" size-md="1">
-                      <ion-item class="checkbox_item">
-                        <ion-checkbox checked (ionChange)="updateObject('copy',uploader?.queue?.length -1,$event)"></ion-checkbox>
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="2" size-md="1">
-                      <ion-item class="checkbox_item">
-                        <ion-checkbox  checked name="down" #down  (ionChange)="updateObject('down',uploader?.queue?.length -1,$event)"></ion-checkbox>
-                      </ion-item>
-                    </ion-col> -->
-                    <ion-col size="2" size-md="1">
-                      <ion-button type="button" (click)="item.remove()" color="primary">x</ion-button>
+                      <ion-button type="button" (click)="removeFile(i,$event)" color="primary">x</ion-button>
                     </ion-col>
                   </ion-row>
                 </ion-grid>

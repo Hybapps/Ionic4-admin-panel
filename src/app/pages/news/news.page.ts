@@ -161,6 +161,15 @@ public uploader: FileUploader = new FileUploader({url: URL,
     let element = this.uploader.queue.splice(reorderEvent.detail.from, 1)[0];
     this.uploader.queue.splice(reorderEvent.detail.to, 0, element);
   }
+  removeFile(i,events)
+  {
+    let index=this.myFiles.indexOf(i);
+    console.log("I=>"+i);
+    console.log(events)
+    console.log(index);
+    this.uploader.queue.splice(index-1,1);
+    this.myFiles.splice(index-1,1);
+  }
   /*****End for Upload */
   ngOnInit() {
     console.log(this.id)
