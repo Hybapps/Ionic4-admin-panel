@@ -10,20 +10,10 @@
           <ion-label>{{'Sort' | translate}}</ion-label>
           <ion-select #sortselect placeholder="{{'select' | translate}}"  [(ngModel)]="sort.q" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}" (ionChange)="sortItem()">
               <ion-select-option value="{{item.name_indb}}" ngValue="item.name_indb" *ngFor="let item of GridCols | filterBy: {sortItem:1}" >{{item.name| translate}}</ion-select-option>
-      <!--       <ion-select-option value="f">Female</ion-select-option>
-            <ion-select-option value="m">Male</ion-select-option> -->
+
           </ion-select>
         </ion-item>
       </ion-col>
-    <!--   <ion-col size-md="3" size="4">
-        <ion-item lines="none">
-          <ion-label>{{'gender' | translate}}</ion-label>
-          <ion-select placeholder="{{'select' | translate}}" okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}">
-            <ion-select-option value="f">Female</ion-select-option>
-            <ion-select-option value="m">Male</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col> -->
       <ion-col size-sm="2" size="6" class="page-num text-center">
         <span>{{'page' | translate}}: {{currentPage}}/{{allpages}}</span>
       </ion-col>
@@ -79,23 +69,7 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <!--   <ion-row *ngFor="let item of crud.listData" text-center>
-        
-        <ion-col>
-          <p>{{item['govName' + global.lang]}}</p>
-        </ion-col>
-        <ion-col>
-          <p *ngIf="item.govActive==1">{{'active' | translate}}</p>
-          <p *ngIf="item.govActive==0">{{'inactive' | translate}}</p>
-        </ion-col>
-      
-        <ion-col>
-          <ion-button (click)="actionList($event,item)" class="ion-no-margin" fill="clear" size="small">
-            <ion-icon slot="icon-only" name="more"></ion-icon>
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    -->
+  
   </ion-grid>
 <p *ngIf="addAllow==1">
   <ion-fab vertical="bottom" horizontal="{{global.fab}}" slot="fixed">

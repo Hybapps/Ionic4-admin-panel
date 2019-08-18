@@ -53,7 +53,6 @@ export class GridPage {
   
  
     
-  //  this.GridCols=[{name:'name',search:1,sortItem:0,'name_indb':"schoolName"+global.lang,type:'text',showVal:"govName"+global.lang},{name:'Governaments',search:1,sortItem:1,'name_indb':"govName"+global.lang,type:'text',showVal:"govName"+global.lang},{name:'Type',search:1,sortItem:1,'name_indb':"schoolType",type:'text',showVal:"schoolType"},{name:'status',search:0,sortItem:1,'name_indb':"schoolActive",type:"boolean",showVal:{0:'inactive',1:'active'}}]
   }
   ngOnInit() {
    
@@ -145,11 +144,9 @@ export class GridPage {
   
     this.crud.list(this.table,this.page,this.sendQuery,'').subscribe(result=>{
       console.log(result['data']);
-     /*   for(let i=0;i<result['data'].length;i++)
-       this.listData.push(result['data'][i])  */
+    
        this.listData=this.listData.concat(result['data'])
-      //}
-     // this.listData.push(result['data']);
+      
       console.log(result['data'].length);
       console.log(this.listData);
       this.currentPage=this.page+1;

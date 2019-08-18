@@ -16,57 +16,6 @@
        
     }
 ],
-"Stages": [
-    {
-        "table": "stages",
-        "pk": "stageId",
-        "title":"Stages",
-        "formUrl": "/Stages",
-        "join": "",
-        "where":"",
-        "requestFields":"*",
-        "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"stageNameAr","type":"text","showVal":"stageNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"stageActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
-        "Upload":"0",
-        "homeWork":"0",
-        "activeCol":"stageActive",
-        "activeitem":0
-       
-    }
-],
-"Semistars": [
-    {
-        "table": "semistars",
-        "pk": "semId",
-        "title":"Semistars",
-        "formUrl": "/Semistars",
-         "join": "",
-         "where":"",
-        "requestFields":"*",
-        "GridCols": [{"name":"name","search":1,"sortItem":1,"name_indb":"semNameAr","type":"text","showVal":"semNameAr"}],
-        "Upload":"0",
-        "homeWork":"0",
-         "activeCol":"",
-        "activeitem":0
-       
-    }
-],
-"Grades": [
-    {
-        "table": "grades",
-        "pk": "gradeId",
-        "title":"Grades",
-        "formUrl": "/Grades",
-         "join": "grades inner join stages ON gradestageId = stageId",
-         "where":"",
-        "requestFields":"*",
-        "GridCols": [{"name":"name","search":1,"sortItem":1,"name_indb":"gradeNameAr","type":"text","showVal":"gradeNameAr"},{"name":"stage","search":1,"sortItem":1,"name_indb":"stageNameAr","type":"text","showVal":"stageNameAr"}],
-        "Upload":"0",
-        "homeWork":"0",
-        "activeCol":"",
-        "activeitem":0
-       
-    }
-],
 "Admins": [
     {
         "table": "admins",
@@ -115,59 +64,6 @@
       "homeWork":"0",
       "activeCol":"govActive",
       "activeitem":0
-     
-  }
-],
-"Units": [
-  {
-      "table": "units",
-      "pk": "unitId",
-      "title":"Units",
-      "Upload":"0",
-      "homeWork":"0",
-      "formUrl": "/Units",
-      "join": "units inner join subjects on unitSubjectId=subjectId",
-      "where":"",
-      "requestFields":"*",
-      "GridCols": [{"name":"subjects","search":1,"sortItem":1,"name_indb":"subjectNameAr","type":"text","showVal":"subjectNameAr"},{"name":"name","search":1,"sortItem":0,"name_indb":"unitNameAr","type":"text","showVal":"unitNameAr"},{"name":"status","search":0,"sortItem":1,"name_indb":"unitActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
-      "activeCol":"unitActive",
-      "activeitem":1
-     
-  }
-]
-,
-"Lessons": [
-  {
-      "table": "lessons",
-      "pk": "lessonId",
-      "title":"Lessons",
-      "formUrl": "/Lessons",
-      "Upload":"0",
-      "homeWork":"1",
-      "join": "lessons INNER JOIN units ON unitId=lessonUnitId INNER JOIN months on monthId=lessonMonthId ",
-      "where":"",
-      "requestFields":"*",
-      "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"lessonName","type":"text","showVal":"lessonName"},{"name":"Units","search":1,"sortItem":0,"name_indb":"unitNameAr","type":"text","showVal":"unitNameAr"},{"name":"months","search":1,"sortItem":1,"name_indb":"monthTitle","type":"text","showVal":"monthTitle"},{"name":"status","search":0,"sortItem":1,"name_indb":"lessonActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
-      "activeCol":"lessonActive",
-      "activeitem":1
-     
-  }
-]
-,
-"Teachers": [
-  {
-      "table": "admins",
-      "pk": "adminId",
-      "title":"Teachers",
-      "formUrl": "/Teachers",
-      "Upload":"0",
-      "homeWork":"0",
-      "join": "",
-      "where":"adminType != 0",
-      "requestFields":"*",
-      "GridCols": [{"name":"name","search":1,"sortItem":0,"name_indb":"adminName","type":"text","showVal":"adminName"},{"name":"Mobile","search":1,"sortItem":0,"name_indb":"adminPhone","type":"text","showVal":"adminPhone"},{"name":"E-mail","search":1,"sortItem":0,"name_indb":"adminEmail","type":"text","showVal":"adminEmail"},{"name":"status","search":0,"sortItem":1,"name_indb":"adminActive","type":"boolean","showVal":{"0":"inactive","1":"active"}}],
-      "activeCol":"adminActive",
-      "activeitem":1
      
   }
 ]
