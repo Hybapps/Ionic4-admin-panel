@@ -1,0 +1,10 @@
+
+<IfModule mod_rewrite.c>
+Options Indexes FollowSymLinks
+RewriteEngine On
+RewriteBase /
+RewriteRule ^\~ashal\admin\index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /~ashal/admin/index.html [L]
+</IfModule>
