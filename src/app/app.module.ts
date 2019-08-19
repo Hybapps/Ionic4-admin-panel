@@ -38,6 +38,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 //import { SortPipe } from './pipes/sort.pipe';
 //import { SearchPipe } from './pipes/search.pipe';
+import { ForgotPasswordPageModule } from './modal/forgot-password/forgot-password.module';
 library.add(fas, far, fab);
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -72,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ActionPageModule,
     NotificationsListPageModule,
     ListPopoverPageModule,
+    ForgotPasswordPageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

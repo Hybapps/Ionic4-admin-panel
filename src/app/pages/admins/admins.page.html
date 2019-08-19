@@ -8,66 +8,71 @@
             <span>*</span>
           </ion-label>
 
-          <ion-input type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
+          <ion-input type="text" formControlName="name"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
           <div *ngIf="submitted && myForm.controls.name.errors" class="invalid-feedback">
             <div *ngIf="myForm.controls.name.errors.required"> Name is required</div>
           </div>
         </ion-item>
       </ion-col>
       <ion-col size-md="4" size="12">
-          <ion-item>
-            <ion-label position="stacked">{{'mobile' | translate}}
-              <span>*</span>
-            </ion-label>
-  
-            <ion-input type="text" formControlName="mob" [ngClass]="{'is-invalid': submitted && myForm.controls.mob.errors }"></ion-input>
-            <div *ngIf="submitted && myForm.controls.mob.errors" class="invalid-feedback">
-              <div *ngIf="myForm.controls.mob.errors.required"> Mobile number is required</div>
-            </div>
-          </ion-item>
-        </ion-col>
-        <ion-col size-md="4" size="12">
-            <ion-item>
-              <ion-label position="stacked">{{'email' | translate}}
-                <span>*</span>
-              </ion-label>
-    
-              <ion-input type="text" formControlName="email" [ngClass]="{'is-invalid': submitted && myForm.controls.email.errors }"></ion-input>
-              <div *ngIf="submitted && myForm.controls.email.errors" class="invalid-feedback">
-                <div *ngIf="myForm.controls.email.errors.required"> E-mail address is required</div>
-                <div *ngIf="myForm.controls.email.errors.email">Email must be a valid email address</div>
+        <ion-item>
+          <ion-label position="stacked">{{'mobile' | translate}}
+            <span>*</span>
+          </ion-label>
 
-              </div>
-            </ion-item>
-          </ion-col>
-          <ion-col size-md="6" size="12">
-            <ion-item>
-              <ion-label position="stacked">{{'username' | translate}}
-                <span>*</span>
-              </ion-label>
-    
-              <ion-input type="text" formControlName="user_name" [ngClass]="{'is-invalid': submitted && myForm.controls.user_name.errors }"></ion-input>
-              <div *ngIf="submitted && myForm.controls.user_name.errors" class="invalid-feedback">
-                <div *ngIf="myForm.controls.user_name.errors.required"> Name is required</div>
-              </div>
-            </ion-item>
-          </ion-col>
-          <ion-col size-md="6" size="12">
-              <ion-item>
-                <ion-label position="stacked">{{'Password' | translate}}
-                  <span>*</span>
-                </ion-label>
-      
-                <ion-input type="password" formControlName="pass" [ngClass]="{'is-invalid': submitted && myForm.controls.pass.errors }"></ion-input>
-                <div *ngIf="submitted && myForm.controls.pass.errors" class="invalid-feedback">
-                  <div *ngIf="myForm.controls.pass.errors.required"> E-mail address is required</div>
-                  <div *ngIf="myForm.controls.pass.errors.minlength">Password must be at least 6 characters</div>
+          <ion-input type="text" formControlName="mob"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.mob.errors }"></ion-input>
+          <div *ngIf="submitted && myForm.controls.mob.errors" class="invalid-feedback">
+            <div *ngIf="myForm.controls.mob.errors.required"> Mobile number is required</div>
+          </div>
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="4" size="12">
+        <ion-item>
+          <ion-label position="stacked">{{'email' | translate}}
+            <span>*</span>
+          </ion-label>
 
-                </div>
-              </ion-item>
-            </ion-col>
-  
-     
+          <ion-input type="text" formControlName="email"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.email.errors }"></ion-input>
+          <div *ngIf="submitted && myForm.controls.email.errors" class="invalid-feedback">
+            <div *ngIf="myForm.controls.email.errors.required"> E-mail address is required</div>
+            <div *ngIf="myForm.controls.email.errors.email">Email must be a valid email address</div>
+
+          </div>
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="6" size="12">
+        <ion-item>
+          <ion-label position="stacked">{{'username' | translate}}
+            <span>*</span>
+          </ion-label>
+
+          <ion-input type="text" formControlName="user_name"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.user_name.errors }"></ion-input>
+          <div *ngIf="submitted && myForm.controls.user_name.errors" class="invalid-feedback">
+            <div *ngIf="myForm.controls.user_name.errors.required"> Name is required</div>
+          </div>
+        </ion-item>
+      </ion-col>
+      <ion-col size-md="6" size="12">
+        <ion-item>
+          <ion-label position="stacked">{{'Password' | translate}}
+            <span>*</span>
+          </ion-label>
+
+          <ion-input type="password" formControlName="pass"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.pass.errors }"></ion-input>
+          <div *ngIf="submitted && myForm.controls.pass.errors" class="invalid-feedback">
+            <div *ngIf="myForm.controls.pass.errors.required"> E-mail address is required</div>
+            <div *ngIf="myForm.controls.pass.errors.minlength">Password must be at least 6 characters</div>
+
+          </div>
+        </ion-item>
+      </ion-col>
+
+
       <ion-col size="6">
 
         <ion-list radio-group #gender name="gender">
@@ -87,7 +92,7 @@
               <ion-label>
                 {{'female' | translate}}
               </ion-label>
-              <ion-radio value="1" slot="start"  (ionSelect)="genderType=1"[checked]="genderType==1"></ion-radio>
+              <ion-radio value="1" slot="start" (ionSelect)="genderType=1" [checked]="genderType==1"></ion-radio>
             </ion-item>
 
           </ion-radio-group>
@@ -106,7 +111,7 @@
                 {{'active' | translate}}
               </ion-label>
               <!-- <input type="radio" slot="start" value="1" formControlName="options" name="options" [checked]="1"> -->
-              <ion-radio value="1" slot="start" (ionSelect)="selected=1"[checked]="selected==1"></ion-radio>
+              <ion-radio value="1" slot="start" (ionSelect)="selected=1" [checked]="selected==1"></ion-radio>
             </ion-item>
 
 
@@ -115,7 +120,7 @@
                 {{'inactive' | translate}}
               </ion-label>
               <!-- <input type="radio" slot="start" value="0" formControlName="options" name="options" [checked]="0"> -->
-              <ion-radio value="0" slot="start" (ionSelect)="selected=0"[checked]="selected==0"></ion-radio>
+              <ion-radio value="0" slot="start" (ionSelect)="selected=0" [checked]="selected==0"></ion-radio>
             </ion-item>
 
           </ion-radio-group>
@@ -129,19 +134,19 @@
             <ion-label>
               <ion-grid no-padding class="darg_drop_list">
                 <ion-row>
-                  <ion-col size="4" size-md="5">
+                  <ion-col size="4"  >
                     <p>Page name</p>
                   </ion-col>
-                  <ion-col size="2" size-md="1">
+                  <ion-col size="2"  >
                     <p>add</p>
                   </ion-col>
-                  <ion-col size="2" size-md="1">
+                  <ion-col size="2"  >
                     <p>view</p>
                   </ion-col>
-                  <ion-col size="2" size-md="1">
+                  <ion-col size="2"  >
                     <p>edit</p>
                   </ion-col>
-                  <ion-col size="2" size-md="1">
+                  <ion-col size="2" >
                     <p>مسح</p>
                   </ion-col>
                 </ion-row>
@@ -150,31 +155,36 @@
           </ion-item>
 
 
-          <ion-reorder-group  disabled="true">
+          <ion-reorder-group disabled="true">
             <ion-item *ngFor="let item of appPage;let i=index">
               <ion-label>
                 <ion-grid no-padding class="darg_drop_list">
                   <ion-row>
-                    <ion-col size="4" size-md="5">
+                    <ion-col size="4"  >
                       <p class="img_path">{{ item.name }}</p>
                     </ion-col>
-                    <ion-col size="2" size-md="1">
-                      <ion-item >
+                    <ion-col size="2"  >
+                      <ion-item class="checkbox_item">
                         <ion-checkbox [checked]='item.add==1' (ionChange)="updateObject('add',i,$event)"></ion-checkbox>
                       </ion-item>
                     </ion-col>
-                    <ion-col size="2" size-md="1">
+                    <ion-col size="2" >
                       <ion-item class="checkbox_item">
-                        <ion-checkbox [checked]='item.view==1' (ionChange)="updateObject('view',i,$event)"></ion-checkbox>
+                        <ion-checkbox [checked]='item.view==1' (ionChange)="updateObject('view',i,$event)">
+                        </ion-checkbox>
                       </ion-item>
                     </ion-col>
-                    <ion-col size="2" size-md="1">
+                    <ion-col size="2" >
                       <ion-item class="checkbox_item">
-                        <ion-checkbox  [checked]='item.edit==1'   (ionChange)="updateObject('edit',i,$event)"></ion-checkbox>
+                        <ion-checkbox [checked]='item.edit==1' (ionChange)="updateObject('edit',i,$event)">
+                        </ion-checkbox>
                       </ion-item>
                     </ion-col>
-                    <ion-col size="2" size-md="1">
-                      <ion-checkbox  [checked]='item.delete==1'   (ionChange)="updateObject('delete',i,$event)"></ion-checkbox>
+                    <ion-col size="2" >
+                      <ion-item class="checkbox_item">
+                        <ion-checkbox [checked]='item.delete==1' (ionChange)="updateObject('delete',i,$event)">
+                        </ion-checkbox>
+                      </ion-item>  
                     </ion-col>
                   </ion-row>
                 </ion-grid>
@@ -188,10 +198,14 @@
       <ion-col size="12">
 
 
-        <ion-button class="submit-btn " *ngIf="!id" type="submit" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
-        <ion-button class="submit-btn " *ngIf="!id" type="submit" (click)="showGrid=1" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
-        <ion-button class="submit-btn " *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
-        <ion-button class="submit-btn " *ngIf="id" (click)="showGrid=1;onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="!id" type="submit" [disabled]="!myForm.valid" shape="round">
+          {{'submit' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="!id" type="submit" (click)="showGrid=1" [disabled]="!myForm.valid"
+          shape="round">{{'submitG' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid" shape="round">
+          {{'submit' | translate}}</ion-button>
+        <ion-button class="submit-btn " *ngIf="id" (click)="showGrid=1;onSubmit()" [disabled]="!myForm.valid"
+          shape="round">{{'submitG' | translate}}</ion-button>
 
 
       </ion-col>

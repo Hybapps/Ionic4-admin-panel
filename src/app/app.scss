@@ -4,10 +4,16 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application. 
-
+//menu style
+ion-split-pane >.split-pane-side {
+    min-width: var(--menu-width) !important;
+    max-width: var(--menu-width) !important;
+    border: none !important;
+}
 ion-menu {
     --ion-text-color: var(--ion-color-primary-contrast);    
     --ion-background-color:var(--ion-color-primary); 
+    --width: var(--menu-width) !important;
     @media (min-width: 776px) {
         --ion-background-color:transparent;        
         background-image: url(../assets/imgs/menu-bg.png);

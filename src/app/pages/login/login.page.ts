@@ -18,11 +18,13 @@ export class LoginPage implements OnInit {
   name;
   pass;
   public myForm: FormGroup;
-
+  // private htmlRoot = document.documentElement;
   constructor(public menu: MenuController,public modalCtrl: ModalController, public navCtrl: NavController, public global: GlobalService,public crud:CrudProviderService,public fm: FormBuilder,private storage: Storage,private route: ActivatedRoute,private router: Router) {
     this.buildForm();
   }
-
+// change(){
+//   this.htmlRoot.classList.add('color');
+// }
   ionViewWillEnter() {
     this.menu.enable(false, 'right');
     this.menu.enable(false, 'left');
