@@ -256,7 +256,7 @@ public function prepareSql($sqlType,$tableName,$inputs)
     foreach($inputs as $field => $fieldValue) 
         {
         $sql.=$field;       
-        $sqlVales.="'".$fieldValue."'";
+        $sqlVales.='"'.$fieldValue.'"';
         if($index<count($inputs))
             {
                 $sql.=",";
@@ -447,7 +447,7 @@ public function upload(Request $request, Response  $response)
         $folderName = $inputs['folder']?$inputs['folder']:time(); 
         $folderPath= '../uploadFolder/original/'.$folderName;
         if (!file_exists($folderPath)) {mkdir($folderPath, 0777, true);					   chmod($folderPath,0777);
-}
+    }
         $folderPath= '../uploadFolder/small/'.$folderName;
         if (!file_exists($folderPath)) {mkdir($folderPath, 0777, true); chmod($folderPath,0777);}
         $folderPath= '../uploadFolder/medium/'.$folderName;
@@ -456,7 +456,7 @@ public function upload(Request $request, Response  $response)
     }
 
   $src=($folderPath)? "../$pathToUpload/original/$folderName/$filename" : "../$pathToUpload/original/$filename";
-//echo "SRC".$src;
+    //echo "SRC".$src;
         //Upload file to the Original folder        
     $file->moveTo($src);
     if($requestSmallThumb )
@@ -481,11 +481,11 @@ public function upload(Request $request, Response  $response)
         return $this->response->withJson($responseData);  
     
     
- //   $file->moveTo('../uploadFolder/12.png');
-//   foreach ($request->getUploadedFiles() as $file)
-//     {
-        
-//     }
+    //   $file->moveTo('../uploadFolder/12.png');
+        //   foreach ($request->getUploadedFiles() as $file)
+    //     {
+            
+    //     }
 
     // $newfile = $files['newfile'];
     // if ($newfile->getError() === UPLOAD_ERR_OK) 
@@ -590,7 +590,7 @@ public function excelupload(Request $request,Response $response)
         
 
   $src=($folderPath)? "../$pathToUpload/excel/$filename" : "../$pathToUpload/excel/$filename";
-//echo "SRC".$src;
+    //echo "SRC".$src;
         //Upload file to the Original folder        
     $file->moveTo($src);
     

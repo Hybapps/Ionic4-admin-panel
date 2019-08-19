@@ -53,31 +53,6 @@
       <ion-col size="12">
         <h2>Files: {{ uploader?.queue?.length }}</h2>
         <ion-list>
-         <!-- <ion-item>
-            <ion-label>
-              <ion-grid no-padding class="darg_drop_list">
-                <ion-row>
-                  <ion-col size="3" size-md="4">
-                    <p>مسار الصورة</p>
-                  </ion-col>
-                  <ion-col size="3" size-md="5">
-                    <p>مسار الصورة</p>
-                  </ion-col>
-                  <ion-col size="2" size-md="1">
-                    <p>عرض</p>
-                  </ion-col>
-                  <ion-col size="2" size-md="1">
-                    <p>تحميل</p>
-                  </ion-col>
-                  <ion-col size="2" size-md="1">
-                    <p>مسح</p>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-label>
-          </ion-item>-->
-
-
           <ion-reorder-group (ionItemReorder)="reorderFiles($event)" disabled="true">
             <ion-item *ngFor="let item of myFiles;let i=index">
               <ion-label>
