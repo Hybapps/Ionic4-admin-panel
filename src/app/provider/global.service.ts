@@ -22,6 +22,7 @@ export class GlobalService {
   loginArr:any={adminId:'',adminName:'',adminType:'',Privillage:'',lastVisit:''}
   private htmlRoot = document.documentElement;
   constructor(public popoverController: PopoverController, public translate: TranslateService,public router: Router, public menu: MenuController, public storage: Storage) { 
+    console.log('Pages ===')
     console.log(this.pages)
     let loginId=window.localStorage.getItem('adminId');
     if(loginId && loginId!==undefined  && loginId!==null && typeof loginId !=undefined)
@@ -48,7 +49,10 @@ export class GlobalService {
         }
       }
   }
-
+    getActiveMenu()
+    {
+      
+    }
   
   
     // change Language

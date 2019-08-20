@@ -1,5 +1,5 @@
 <ion-content padding>
-  <h3>{{title | translate}}</h3>
+  
   <form class="admin-form ion-padding" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <ion-row>
       <ion-col size-md="12" size="12">
@@ -16,7 +16,7 @@
       </ion-col>
         <ion-col size-md="12" size="12">
           <ion-item>
-            <ion-label position="stacked">{{'Date' | translate}} </ion-label>
+            <ion-label position="stacked">{{'date' | translate}} </ion-label>
             <ion-datetime displayFormat="DD-MM-YYYY" formControlName="newsDate" pickerFormat="DD-MM-YYYY" ></ion-datetime>
   
            
@@ -39,8 +39,8 @@
     
         <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader"
           class="drop-zone">
-          <p>أضف الصورة هنا ....</p>
-          <span class="or">أو</span>
+          <p>{{'addImg' | translate}}</p>
+          <span class="or">{{'OR' | translate}}</span>
           <div class="file-input-container">
             <label>
               <input type="file" name="attachment[]" ng2FileSelect [uploader]="uploader" />
@@ -51,7 +51,7 @@
 
       </ion-col>
       <ion-col size="12">
-        <h2>Files: {{ uploader?.queue?.length }}</h2>
+        <h2>{{'Files' | translate}}: {{ uploader?.queue?.length }}</h2>
         <ion-list>
           <ion-reorder-group (ionItemReorder)="reorderFiles($event)" disabled="true">
             <ion-item *ngFor="let item of myFiles;let i=index">
