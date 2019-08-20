@@ -44,11 +44,11 @@
             <!--   <p *ngFor="let priv of global.Privillage; let a=index" > {{priv.name}} {{priv.view}}
                 <span *ngIf="priv.name==item.title && ( priv.view || priv.view==1)"> -->
                     <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none">
-                      <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
+                      <ion-icon slot="start" color="secondary" [name]="item.icon"></ion-icon>
                       <ion-label>
                         {{item.title| translate}}
                       </ion-label>
-                      <ion-icon color="light" slot="end" [name]="item.arrow"></ion-icon>
+                      <ion-icon color="dark" slot="end" [name]="item.arrow"></ion-icon>
                     </ion-item>
                     <div *ngIf="isGroupShown(item)" class="sub-list">
                       <p [routerLink]="[p.url]" *ngFor="let p of item.sublist">{{p.title | translate}}</p>
@@ -70,11 +70,11 @@
                   <span *ngIf="priv.name==item.title && ( priv.view || priv.view==1)"> -->
               
             <ion-item (click)="toggleDetails(item);activeItem(i)" [ngClass]="{'active-item':global.activeitem==i}" lines="none" >
-              <ion-icon slot="start" color="light" [name]="item.icon"></ion-icon>
+              <ion-icon slot="start" color="secondary" [name]="item.icon"></ion-icon>
               <ion-label>
                 {{item.title| translate}}
               </ion-label>
-              <ion-icon color="light" slot="end" [name]="item.arrow"></ion-icon>
+              <ion-icon color="dark" slot="end" [name]="item.arrow"></ion-icon>
             </ion-item>
             <div *ngIf="isGroupShown(item)" class="sub-list">
               <!-- class="active"  -->

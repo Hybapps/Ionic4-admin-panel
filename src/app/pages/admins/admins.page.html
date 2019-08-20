@@ -5,7 +5,7 @@
       <ion-col size-md="4" size="12">
         <ion-item>
           <ion-label position="stacked">{{'name' | translate}}
-            <span>*</span>
+            <span class="red_star">*</span>
           </ion-label>
 
           <ion-input type="text" formControlName="name"
@@ -18,7 +18,7 @@
       <ion-col size-md="4" size="12">
         <ion-item>
           <ion-label position="stacked">{{'mobile' | translate}}
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
           <ion-input type="text" formControlName="mob"
@@ -31,7 +31,7 @@
       <ion-col size-md="4" size="12">
         <ion-item>
           <ion-label position="stacked">{{'email' | translate}}
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
           <ion-input type="text" formControlName="email"
@@ -46,7 +46,7 @@
       <ion-col size-md="6" size="12">
         <ion-item>
           <ion-label position="stacked">{{'username' | translate}}
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
           <ion-input type="text" formControlName="user_name"
@@ -59,7 +59,7 @@
       <ion-col size-md="6" size="12">
         <ion-item>
           <ion-label position="stacked">{{'Password' | translate}}
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
           <ion-input type="password" formControlName="pass"
@@ -165,24 +165,24 @@
                     </ion-col>
                     <ion-col size="2"  >
                       <ion-item class="checkbox_item">
-                        <ion-checkbox [checked]='item.add==1' (ionChange)="updateObject('add',i,$event)"></ion-checkbox>
+                        <ion-checkbox color="secondary" [checked]='item.add==1' (ionChange)="updateObject('add',i,$event)"></ion-checkbox>
                       </ion-item>
                     </ion-col>
                     <ion-col size="2" >
                       <ion-item class="checkbox_item">
-                        <ion-checkbox [checked]='item.view==1' (ionChange)="updateObject('view',i,$event)">
+                        <ion-checkbox color="secondary" [checked]='item.view==1' (ionChange)="updateObject('view',i,$event)">
                         </ion-checkbox>
                       </ion-item>
                     </ion-col>
                     <ion-col size="2" >
                       <ion-item class="checkbox_item">
-                        <ion-checkbox [checked]='item.edit==1' (ionChange)="updateObject('edit',i,$event)">
+                        <ion-checkbox color="secondary" [checked]='item.edit==1' (ionChange)="updateObject('edit',i,$event)">
                         </ion-checkbox>
                       </ion-item>
                     </ion-col>
                     <ion-col size="2" >
                       <ion-item class="checkbox_item">
-                        <ion-checkbox [checked]='item.delete==1' (ionChange)="updateObject('delete',i,$event)">
+                        <ion-checkbox color="secondary" [checked]='item.delete==1' (ionChange)="updateObject('delete',i,$event)">
                         </ion-checkbox>
                       </ion-item>  
                     </ion-col>

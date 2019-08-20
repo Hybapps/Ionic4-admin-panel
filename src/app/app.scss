@@ -10,37 +10,35 @@ ion-split-pane >.split-pane-side {
     max-width: var(--menu-width) !important;
     border: none !important;
 }
-ion-menu {
-    --ion-text-color: var(--ion-color-primary-contrast);    
-    --ion-background-color:var(--ion-color-primary); 
-    --width: var(--menu-width) !important;
-    @media (min-width: 776px) {
-        --ion-background-color:transparent;        
-        background-image: url(../assets/imgs/menu-bg.png);
-        &:after{
-            content:'';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(var(--ion-color-primary-rgb),0.7);
-            z-index: -1;
-        }
+// .split-pane{
+//     flex-direction: row-reverse;
+// }
+ion-split-pane{
+    &.split-pane-visible{
+      flex-direction: row-reverse!important; 
     }
+  }
+ion-menu {
+    // --ion-text-color: var(--ion-color-primary-contrast);    
+    // --ion-background-color:var(--ion-color-primary); 
+    --width: var(--menu-width) !important;
+    // @media (min-width: 776px) {
+    //     --ion-background-color:transparent;     
+    // }
     ion-header{
         ion-toolbar {
             --background: transparent;
-            font-family: 'SaNazeguln';
+            // font-family: 'SaNazeguln';
             ion-title{
                 font-size:1.5rem;
             }
         }
     }
     ion-content{
-        --background: transparent;
+        --background: var(--ion-color-light-shade); 
+        // background-image: url(../assets/imgs/menu-bg.png);
         ion-list {
-            background: transparent;
+            background: none!important;
             padding: 0 !important;
             ion-item{
                 --background:transparent;	
@@ -67,14 +65,15 @@ ion-menu {
                     margin:0px;
                     height:45px;
                     line-height:45px;
-                    background:rgba(var(--ion-color-light-rgb),.2);
+                    background:rgba(var(--ion-color-light-rgb),.5);
                     font-size:1.2rem;
                     cursor: pointer;
                     &:first-of-type{
                         border-bottom:0px;
                     }
                     &.active{
-                        background: rgba(var(--ion-color-light-rgb),.45); 
+                        // background: rgba(var(--ion-color-light-rgb),.45); 
+                        color: var(--ion-color-primary);
                         // background: rgba(var(--ion-color-light-rgb),.45); 
                     }
                 }
