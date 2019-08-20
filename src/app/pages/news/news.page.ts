@@ -5,8 +5,9 @@ import { CrudProviderService } from '../../provider/crud-provider.service';
 import { AlertController,ModalController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import {Md5} from 'ts-md5/dist/md5'
 import { FileUploader , FileSelectDirective,FileLikeObject } from 'ng2-file-upload';
+
+import {Md5} from 'ts-md5/dist/md5'
 import { LoadingController } from '@ionic/angular';
 
 import { File } from '@ionic-native/File/ngx';
@@ -26,10 +27,13 @@ appPage:any[]=[];
 public myForm: FormGroup;
   id:any;
   public hasBaseDropZoneOver: boolean = false;
-  myDate = new Date(); 
-  imgUrl="http://ionicadmin.hybapps.com/uploadFolder/original/";
   filesUploaded='';
   myFiles:any[] = [];
+  filesAttach;
+
+  myDate = new Date(); 
+  imgUrl="http://ionicadmin.hybapps.com/uploadFolder/original/";
+ 
   usePicker;selectedImage;
   minDate;
   maxDate;
@@ -59,7 +63,6 @@ public myForm: FormGroup;
     
   };
   
-  filesAttach;
   mode=0;
   submitted = false;
   statusSelect=1;
@@ -82,8 +85,10 @@ public myForm: FormGroup;
     console.log(this.uploader.queue)
    
     };
+
     this.uploader.onCancelItem=(file)=>{file.withCredentials = false;
       console.log(' new Files =>'+this.uploader.queue.length)}
+
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
          console.log('FileUpload:uploaded:', item, status, response);
         let result=JSON.parse(response)
@@ -92,9 +97,9 @@ public myForm: FormGroup;
             let check =this.filesUploaded.split(',');
             this.myFiles.push(result.data.fileName)
 
-console.log(this.filesUploaded)
-console.log(this.myFiles)
-//this.myFiles.push(result.data.fileName)
+                console.log(this.filesUploaded)
+                console.log(this.myFiles)
+                //this.myFiles.push(result.data.fileName)
             if(check.length==this.uploader.queue.length)
             {
                 console.log('Finish Upload')
@@ -142,9 +147,7 @@ public uploader: FileUploader = new FileUploader({url: URL,
   autoUpload: true,
   method: 'post',
   itemAlias: 'attachment',
- // additionalParameter:{"folder":this.id,"requestNewFolder":'1'},
   allowedFileType: ['image', 'pdf'] });
-  
   public onFileSelected(event: EventEmitter<File[]>) {
     const file: File = event[0];
     console.log(file);

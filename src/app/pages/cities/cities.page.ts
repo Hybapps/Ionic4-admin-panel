@@ -26,7 +26,6 @@ export class CitiesPage implements OnInit {
   public hasBaseDropZoneOver: boolean = false;
   public myForm: FormGroup;
   country: Country[];
-
   submitted = false;
   statusSelect = 1;
   disabled = true;
@@ -138,13 +137,7 @@ public uploader: FileUploader = new FileUploader({url: URL,
 
   ngOnInit() {
     console.log(this.id)
-   // console.log(this.crud.list);
-   /*  setTimeout(() => {
-      this.stageArr = this.crud.returnData['stageArr'];
-      console.log(this.stageArr)
-
-    }, 2000); */
-
+   
     this.translate.get('sucess').subscribe((res: string) => {
       this.alertHead = res;
     });
