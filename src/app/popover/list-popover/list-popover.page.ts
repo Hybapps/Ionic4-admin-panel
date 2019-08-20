@@ -25,7 +25,7 @@ export class ListPopoverPage implements OnInit {
       window.localStorage.removeItem('adminName');
       window.localStorage.removeItem('adminType');
       window.localStorage.removeItem('lastVisit');
-      window.localStorage.removeItem('adminSubject');
+      window.localStorage.removeItem('Privillage');
       this.router.navigate(['/login']);
 
   }

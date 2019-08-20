@@ -24,6 +24,9 @@ export class GlobalService {
   constructor(public popoverController: PopoverController, public translate: TranslateService,public router: Router, public menu: MenuController, public storage: Storage) { 
     console.log('Pages ===')
     console.log(this.pages)
+    /*let themeLang=window.localStorage.getItem('lang');
+    this.lang=themeLang;
+    this.change_lang(themeLang);*/
     let loginId=window.localStorage.getItem('adminId');
     if(loginId && loginId!==undefined  && loginId!==null && typeof loginId !=undefined)
       {
@@ -49,27 +52,23 @@ export class GlobalService {
         }
       }
   }
-    getActiveMenu()
-    {
-      
-    }
-  
+    
   
     // change Language
     change_lang(lang) { 
        console.log(this.lang);
       this.lang=lang;
-      this.storage.set('lang', this.lang);
+     // this.storage.set('lang', this.lang);
       if (lang === 'En') {
         this.Dir = 'ltr';
-        this.menu.enable(false, 'rightMenu');
-        this.menu.enable(true, 'leftMenu'); 
+        this.menu.enable(false, 'right');
+        this.menu.enable(true, 'left'); 
         console.log(lang);
       } else if (lang === 'Ar') {
         this.Dir = 'rtl';
         console.log(lang);
-        this.menu.enable(false, 'leftMenu');
-        this.menu.enable(true, 'rightMenu'); 
+        this.menu.enable(false, 'left');
+        this.menu.enable(true, 'right'); 
       }
       this.htmlRoot.setAttribute('dir', this.Dir);
       this.translate.setDefaultLang(lang);

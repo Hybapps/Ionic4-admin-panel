@@ -30,6 +30,8 @@ const routes: Routes = [
   },
   { path: 'statistics', loadChildren: './pages/statistics/statistics.module#StatisticsPageModule' },
   { path: 'news', loadChildren: './pages/news/news.module#NewsPageModule' },
+  { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
+
   /*{ path: 'Grades', loadChildren: './pages/grades/grades.module#GradesPageModule' },
   { path: 'Semistars', loadChildren: './pages/semistars/semistars.module#SemistarsPageModule' },*/
   { path: 'Cities', loadChildren: './pages/cities/cities.module#CitiesPageModule' },

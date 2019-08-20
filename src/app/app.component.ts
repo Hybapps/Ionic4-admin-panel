@@ -38,15 +38,27 @@ export class AppComponent {
     this.global.pages=this.MenuPages;
     console.log(this.MenuPages)
     /*else*/ this.appPages=this.MenuPages;
-   
+    console.log(this.MenuPages) 
     //this.global.activeitem = 0;
-    if(localStorage.getItem('activeMenu'))
-    this.getActiveGroup()
+  
     console.log("ActiveLink =>"+this.global.activeitem)
     console.log(this.appPages[this.global.activeitem]);
    // this.toggleDetails(this.appPages[this.global.activeitem]);
     this.initializeApp();
-    this.storage.get('lang').then((val) => {
+    let themeLang=window.localStorage.getItem('lang');
+    console.log('Theme lang =>'+themeLang);
+    if(themeLang=='En')
+    {
+      this.global.lang = 'En';
+      this.menu.enable(true, 'left');
+      this.menu.enable(false, 'right');
+    }else{
+      this.global.lang = 'Ar';
+      this.menu.enable(true, 'right');
+      this.menu.enable(false, 'left');
+    }
+    this.global.change_lang(this.global.lang);
+   /*  this.storage.get('lang').then((val) => {
       if (val != null) {
         if (val === 'En') {
           this.global.lang = 'En';
@@ -60,14 +72,15 @@ export class AppComponent {
       }
     
       this.global.change_lang(this.global.lang);
-    });
+    }); */
   }
 
   isGroupShown(group) {
     return this.shownGroup === group;
   }
 
-  toggleDetails(group) {
+  toggleDetails(group) { 
+    console.log('toggle Details');
     console.log(group)
     if (group.sublist) {
 
@@ -75,7 +88,7 @@ export class AppComponent {
         if (this.shownGroup) { this.shownGroup.arrow = 'ios-arrow-down'; }
         this.shownGroup = null;
         group.arrow = 'ios-arrow-forward';
-       // console.log(group.sublist)
+        console.log(group.sublist)
       } else {
         if (this.shownGroup) { this.shownGroup.arrow = 'ios-arrow-forward'; }
         this.shownGroup = group;
@@ -90,6 +103,8 @@ export class AppComponent {
   }
   ngOnInit()
   {
+    if(localStorage.getItem('activeMenu'))
+    this.getActiveGroup()
       console.log('Init')
       if(this.global.loginArr)
     {
@@ -145,6 +160,7 @@ export class AppComponent {
   }
   ionViewWillEnter()
   {
+    
   }
 
   initializeApp() {
@@ -155,8 +171,16 @@ export class AppComponent {
   }
   getActiveGroup()
   {
-    let index=localStorage.getItem('activeMenu');
-    console.log('Index=>'+index)
+    let index=parseInt(localStorage.getItem('activeMenu'));
+    console.log('Index=>'+index);
+    for(let i=0;i<this.MenuPages.length;i++)
+    { console.log('I=>'+i);
+      if(i==index){
+          this.toggleDetails(this.MenuPages[i])
+            console.log(this.MenuPages[i]);
+            console.log(index);
+      }
+    }
   }
   //active menu item
   activeItem(index) {

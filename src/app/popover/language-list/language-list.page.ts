@@ -1,7 +1,7 @@
 
  
 import { Component, OnInit } from '@angular/core';
- 
+
 @Component({
   selector: 'app-language-list',
   templateUrl: './language-list.page.html',
@@ -14,7 +14,11 @@ export class LanguageListPage implements OnInit {
   ngOnInit() {
     
   }
-
+changelang(lang)
+{
+  localStorage.setItem('lang',lang);
+  document.location.reload();
+}
  
 }
  
