@@ -279,7 +279,7 @@ public function prepareSql($sqlType,$tableName,$inputs)
          foreach($inputs[$i] as $field => $fieldValue) 
             {
            if($i==0) $sql.=$field;       
-            $sqlValues.="'".$fieldValue."'";
+            $sqlValues.='"'.$fieldValue.'"';
             if($index<count($inputs[$i]))
                 {
                    if($i==0){ $sql.=",";}
@@ -302,7 +302,7 @@ public function prepareSql($sqlType,$tableName,$inputs)
         foreach($inputs as $field => $fieldValue) 
             {
             $sql.=$field;       
-            $sql.="='".$fieldValue."'";
+            $sql.='="'.$fieldValue.'"';
             if($index<count($inputs))
                     $sql.=",";
             $index++;
