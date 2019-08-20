@@ -18,6 +18,15 @@ ion-content{
         justify-content: center;
         position: relative;
     }
+    form{
+        ion-list{
+            background:none;
+            padding-bottom:0px;
+             ion-item{
+                 margin-bottom:10px;
+             }
+        }
+    }
     .login-content{
         // @media (min-width: 776px) {
         //     position: absolute;
@@ -34,10 +43,17 @@ ion-content{
         overflow: hidden;
         box-shadow:0 15px 32px 0 rgba(0,0,0,.2); 
         // margin:30px auto;
+        ion-col{
+            padding: 10px;
+        }
         h3{
             font-size:1.3rem;
-            font-family: 'SaNazeguln';
+            // font-family: 'SaNazeguln';
             text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin:0px; 
+            // color: #fff
         }
         .select-lng{
             position: absolute;

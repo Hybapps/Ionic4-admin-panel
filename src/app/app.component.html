@@ -1,33 +1,40 @@
 <ion-app [ngClass]="{'no_header' : global.title=='sign'}">
-  <ion-header class="main_header" *ngIf="global.title!='sign'">
-    <ion-toolbar>
-      <div slot="start" class="control_content">
-          <h4 >{{'admin_panel'| translate}} </h4>
-      </div>
-      <ion-buttons slot="start">
-        <ion-menu-toggle >
-          <ion-icon name="menu"></ion-icon>
-        </ion-menu-toggle>
-      </ion-buttons>
-      <ion-title>
-              {{global.title}} <!--{{global.loginArr.Privillage[0].name}}-->
-
-      </ion-title> 
-      <ion-buttons slot="end">
-        <ion-button (click)="global.languagePopover($event)">
-          <fa-icon [icon]="['far', 'flag']"></fa-icon>
-        </ion-button>
-        <ion-button (click)="global.notificationPopover($event)">
-          <fa-icon [icon]="['far', 'bell']"></fa-icon>
-        </ion-button>
-        <ion-button (click)="global.listPopover($event)">
-          <fa-icon [icon]="['far', 'user']"></fa-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-split-pane>
-
+    <ion-header class="main_header" *ngIf="global.title!='sign'">
+      <ion-toolbar>
+        <div slot="start" class="control_content">
+          <div class="container"> 
+              <h4 >
+                  {{'admin_panel'| translate}} 
+              </h4>
+              <p> 
+                  <span>{{global.loginArr.adminName}} : </span>
+                  1/10/2019
+              </p>
+          </div>
+  
+        </div>
+        <ion-buttons slot="start">
+          <ion-menu-toggle >
+            <ion-icon name="menu"></ion-icon>
+          </ion-menu-toggle>
+        </ion-buttons>
+        <ion-title>
+          {{global.title}}
+        </ion-title> 
+        <ion-buttons slot="end">
+          <ion-button (click)="global.languagePopover($event)">
+            <fa-icon [icon]="['far', 'flag']"></fa-icon>
+          </ion-button>
+          <ion-button (click)="global.notificationPopover($event)">
+            <fa-icon [icon]="['far', 'bell']"></fa-icon>
+          </ion-button>
+          <ion-button (click)="global.listPopover($event)">
+            <fa-icon [icon]="['far', 'user']"></fa-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-split-pane>
 
     <ion-menu side="start" menuId="left"> 
       <ion-content>
