@@ -49,6 +49,7 @@ export class AppComponent {
     console.log('Theme lang =>'+themeLang);
     if(themeLang=='En')
     {
+      //this.global.activeitem=
       this.global.lang = 'En';
       this.menu.enable(true, 'left');
       this.menu.enable(false, 'right');
@@ -172,6 +173,7 @@ export class AppComponent {
   getActiveGroup()
   {
     let index=parseInt(localStorage.getItem('activeMenu'));
+    this.global.activeitem=index;
     console.log('Index=>'+index);
     for(let i=0;i<this.MenuPages.length;i++)
     { console.log('I=>'+i);
@@ -183,10 +185,13 @@ export class AppComponent {
     }
   }
   //active menu item
-  activeItem(index) {
+  activeItem(index,item) {
+    console.log('Index init =>'+index)
     this.global.activeitem = index;
     window.localStorage.setItem('activeMenu', index);
-
+    setTimeout( () => {
+     this.toggleDetails(item);}
+     ,100) 
     console.log("Global Active =>"+this.global.activeitem)
   }
 
