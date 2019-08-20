@@ -22,7 +22,7 @@
       <ion-col size-md="12" size="12">
         <ion-item>
           <ion-label position="stacked">{{'name' | translate}} 
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
           <ion-input type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
@@ -34,10 +34,10 @@
       <ion-col size-md="12" size="12">
         <ion-item>
           <ion-label  >{{'status' | translate}} 
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
-          <ion-checkbox color="dark" id="options" slot="start" name='options' class="form-control" formControlName="options"  ></ion-checkbox>
+          <ion-checkbox color="secondary" id="options" slot="start" name='options' class="form-control" formControlName="options"  ></ion-checkbox>
 
         </ion-item>
       </ion-col>

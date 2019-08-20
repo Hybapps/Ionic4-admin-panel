@@ -5,7 +5,7 @@
       <ion-col size-md="12" size="12">
         <ion-item>
           <ion-label position="stacked">{{'Title' | translate}}
-            <span>*</span>
+            <span  class="red_star" >*</span>
           </ion-label>
 
           <ion-input type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
@@ -26,10 +26,10 @@
           <ion-col size-md="12" size="12">
             <ion-item>
               <ion-label  >{{'status' | translate}} 
-                <span>*</span>
+                <span  class="red_star" >*</span>
               </ion-label>
     
-              <ion-checkbox color="dark" id="options" name='options' slot="start" class="form-control" formControlName="options"  ></ion-checkbox>
+              <ion-checkbox color="secondary" id="options" name='options' slot="start" class="form-control" formControlName="options"  ></ion-checkbox>
     
             </ion-item>
           </ion-col>
@@ -89,12 +89,12 @@
                     </ion-col>
                     <ion-col size="2" size-md="1">
                       <ion-item class="checkbox_item">
-                        <ion-checkbox [checked]="item.lessonAttachCopy==1" (ionChange)="updateAttach('copy',index,$event)"></ion-checkbox>
+                        <ion-checkbox color="secondary" [checked]="item.lessonAttachCopy==1" (ionChange)="updateAttach('copy',index,$event)"></ion-checkbox>
                       </ion-item>
                     </ion-col>
                     <ion-col size="2" size-md="1">
                       <ion-item class="checkbox_item">
-                        <ion-checkbox formControlName="down" name="down" #down [checked]="item.lessonAttachDownload==1" (ionChange)="updateAttach('down',index,$event)"></ion-checkbox>
+                        <ion-checkbox  color="secondary" formControlName="down" name="down" #down [checked]="item.lessonAttachDownload==1" (ionChange)="updateAttach('down',index,$event)"></ion-checkbox>
                       </ion-item>
                     </ion-col>
                     <ion-col size="2" size-md="1">
