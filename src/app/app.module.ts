@@ -35,14 +35,11 @@ import {Md5} from 'ts-md5/dist/md5'
 import { IonicStorageModule } from '@ionic/storage';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-<<<<<<< HEAD
 //import { SortPipe } from './pipes/sort.pipe';
 //import { SearchPipe } from './pipes/search.pipe';
 import { ForgotPasswordPageModule } from './modal/forgot-password/forgot-password.module';
-=======
 import { QuillModule } from 'ngx-quill'
 
->>>>>>> dad25a9bc83b7f2653c19fc87e2ef94abcc0ade2
 library.add(fas, far, fab);
 
 export function HttpLoaderFactory(http: HttpClient) {
