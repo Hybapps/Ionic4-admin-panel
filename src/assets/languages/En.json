@@ -80,6 +80,22 @@
   "reset_password":"Reset Your Password",
   "registered_with_us":"Registered with us",
   "send":"Send",
-  "email":"E-mail"
+  "email":"E-mail",
+  "News":"News",
+  "Admins":"Admins",
+  "Details":"Details",
+  "date":"Date",
+  "Title":"Title",
+  "Files":"files",
+  "addImg":"Add files here ....",
+  "OR":"Or",
+  "Privillage":"Privillage",
+  "pgName":"Page name",
+  "add":"add",
+  "view":"View",
+  "male":"Male",
+  "female":"Female",
+  "mobile":"Mobile",
+  "country":"Country"
 }
 

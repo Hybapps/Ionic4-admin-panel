@@ -98,6 +98,8 @@ let where="adminUN ='"+this.myForm.controls.name.value+"' AND adminPW='"+passwor
 
         window.localStorage.setItem('adminType', loginArr[0].adminType);
         window.localStorage.setItem('lastVisit', LastVisitdate);
+        window.localStorage.setItem('activeMenu', '0');
+
         console.log(this.global.loginArr)
         //console.log(this.storage)
         this.router.navigateByUrl('/statistics');

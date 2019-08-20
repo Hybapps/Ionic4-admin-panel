@@ -32,6 +32,7 @@ public myForm: FormGroup;
  
   constructor(public global: GlobalService,public fm: FormBuilder, public crud: CrudProviderService, private alertController: AlertController, private route: ActivatedRoute, private router: Router, public translate: TranslateService) { 
     console.log(this.global.pages)
+    this.global.activeitem=3;
    // let i=0;
     for (const item of this.global.pages) {
       if(item.sublist)

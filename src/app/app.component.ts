@@ -40,8 +40,11 @@ export class AppComponent {
     /*else*/ this.appPages=this.MenuPages;
    
     //this.global.activeitem = 0;
-    console.log("ActiveLink =>"+this.appPages[this.global.activeitem]);
-    this.toggleDetails(this.appPages[this.global.activeitem]);
+    if(localStorage.getItem('activeMenu'))
+    this.getActiveGroup()
+    console.log("ActiveLink =>"+this.global.activeitem)
+    console.log(this.appPages[this.global.activeitem]);
+   // this.toggleDetails(this.appPages[this.global.activeitem]);
     this.initializeApp();
     this.storage.get('lang').then((val) => {
       if (val != null) {
@@ -65,7 +68,7 @@ export class AppComponent {
   }
 
   toggleDetails(group) {
-
+    console.log(group)
     if (group.sublist) {
 
       if (this.isGroupShown(group)) {
@@ -150,10 +153,17 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
-
+  getActiveGroup()
+  {
+    let index=localStorage.getItem('activeMenu');
+    console.log('Index=>'+index)
+  }
   //active menu item
   activeItem(index) {
     this.global.activeitem = index;
+    window.localStorage.setItem('activeMenu', index);
+
+    console.log("Global Active =>"+this.global.activeitem)
   }
 
 }
