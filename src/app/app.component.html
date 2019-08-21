@@ -13,7 +13,7 @@
           </div>
   
         </div>
-        <ion-buttons slot="start">
+        <ion-buttons slot="start" class="ion-hide-lg-up">
           <ion-menu-toggle >
             <ion-icon name="menu"></ion-icon>
           </ion-menu-toggle>
@@ -22,6 +22,9 @@
           {{global.title}}
         </ion-title> 
         <ion-buttons slot="end">
+          <ion-button (click)="global.listPopover($event)">
+            <ion-icon name="ios-color-palette" color="light"></ion-icon>
+          </ion-button>
           <ion-button (click)="global.languagePopover($event)">
             <fa-icon [icon]="['far', 'flag']"></fa-icon>
           </ion-button>
