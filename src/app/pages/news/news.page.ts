@@ -234,18 +234,21 @@ buildForm()
 }
 buildFormModify()
 {
- let item=this.listData[0];
- this.selected=item.adminActive;
- 
- this.myForm = this.fm.group({
-   name: [item.newsTitleAr, Validators.required],
-   detail: [item.newsDescAr, [Validators.required]],
-   newsDate: [item.newsDate, Validators.required],
-   
-   options: [item.newsActive, Validators.required]
-   
-});
-
+    let item=this.listData[0];
+    this.selected=item.adminActive;
+    
+    this.myForm = this.fm.group({
+      name: [item.newsTitleAr, Validators.required],
+      detail: [item.newsDescAr, [Validators.required]],
+      newsDate: [item.newsDate, Validators.required],
+      
+      options: [item.newsActive, Validators.required]
+      
+    });
+  let files=item.newsFiles.split(',');
+  for(let i=0;i<files.length;i++)
+     this.myFiles.push(files[i]);
+  //this.myFiles=item.newsFiles;
 }
 
 onSubmit() {
