@@ -13,7 +13,7 @@ import { Storage } from '@ionic/storage';
 })
 export class GlobalService {
   title:string='الصفحة الرئيسية';
-  lang = 'Ar';
+  lang = 'En';
   fab = 'end';
   Dir;
   activeitem=0;
@@ -52,11 +52,24 @@ export class GlobalService {
         }
       }
   }
-    
-  
+  addslashes(str) {
+      str = str.replace(/\\/g, '\\\\');
+      str = str.replace(/\'/g, '\\\'');
+      str = str.replace(/\"/g, '\\"');
+      str = str.replace(/\0/g, '\\0');
+      return str;
+  }
+ 
+  stripslashes(str) {
+        str = str.replace(/\\'/g, '\'');
+        str = str.replace(/\\"/g, '"');
+        str = str.replace(/\\0/g, '\0');
+        str = str.replace(/\\\\/g, '\\');
+        return str;
+  }
     // change Language
     change_lang(lang) { 
-       console.log(this.lang);
+       console.log("Init Lang =>"+this.lang);
       this.lang=lang;
      // this.storage.set('lang', this.lang);
       if (lang === 'En') {
@@ -66,7 +79,7 @@ export class GlobalService {
         console.log(lang);
       } else if (lang === 'Ar') {
         this.Dir = 'rtl';
-        console.log(lang);
+        console.log("lang=>"+lang);
         this.menu.enable(false, 'left');
         this.menu.enable(true, 'right'); 
       }

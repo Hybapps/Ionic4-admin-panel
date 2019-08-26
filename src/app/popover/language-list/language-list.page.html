@@ -1,10 +1,10 @@
 <ion-content>
     <ion-list>
-        <ion-item (click)="changelang('En')">
+        <ion-item *ngIf="mylang=='Ar'"(click)="changelang('En')">
             <img src="./assets/imgs/en.png" slot="start">
             <ion-label>English</ion-label>
         </ion-item>
-        <ion-item (click)="changelang('Ar')">
+        <ion-item *ngIf="mylang=='En'" (click)="changelang('Ar')">
             <img src="./assets/imgs/ar.png" slot="start">
             <ion-label>عربي</ion-label>
         </ion-item>

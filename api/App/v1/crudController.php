@@ -438,7 +438,7 @@ public function upload(Request $request, Response  $response)
         }
         
     $file = $uploadedFiles['attachment'];
-    $extension = pathinfo($file->getClientFilename(), PATHINFO_EXTENSION);
+    $extension = strtolower(pathinfo($file->getClientFilename(), PATHINFO_EXTENSION));
     $basename = time(); 
     $filename = sprintf('%s.%0.8s', $basename, $extension);
     $folderName='';
@@ -619,6 +619,7 @@ function moveUploadedFile($directory, UploadedFile $uploadedFile){
 
 return $filename;
 }
+
 
 //------
 }

@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import {Md5} from 'ts-md5/dist/md5'
 import { Storage } from '@ionic/storage';
 import { ActivatedRoute,Router } from '@angular/router'; 
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginPage implements OnInit {
   pass;
   public myForm: FormGroup;
   // private htmlRoot = document.documentElement;
-  constructor(public menu: MenuController,public modalCtrl: ModalController, public navCtrl: NavController, public global: GlobalService,public crud:CrudProviderService,public fm: FormBuilder,private storage: Storage,private route: ActivatedRoute,private router: Router) {
+  constructor(public menu: MenuController,public modalCtrl: ModalController, public navCtrl: NavController, public global: GlobalService,public crud:CrudProviderService,public fm: FormBuilder,private storage: Storage,private route: ActivatedRoute,private router: Router,public translate : TranslateService) {
     this.buildForm();
   }
 // change(){
@@ -101,6 +102,7 @@ let where="adminUN ='"+this.myForm.controls.name.value+"' AND adminPW='"+passwor
         window.localStorage.setItem('adminType', loginArr[0].adminType);
         window.localStorage.setItem('lastVisit', LastVisitdate);
         window.localStorage.setItem('activeMenu', '0');
+        window.localStorage.setItem('lang', this.global.lang);
 
         console.log(this.global.loginArr)
         //console.log(this.storage)
@@ -110,7 +112,7 @@ let where="adminUN ='"+this.myForm.controls.name.value+"' AND adminPW='"+passwor
     });
   }
 
-
+ 
 
   async forgot_password() {
     const modal = await this.modalCtrl.create({

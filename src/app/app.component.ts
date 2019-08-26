@@ -46,7 +46,10 @@ export class AppComponent {
    // this.toggleDetails(this.appPages[this.global.activeitem]);
     this.initializeApp();
     let themeLang=window.localStorage.getItem('lang');
+
     console.log('Theme lang =>'+themeLang);
+if(themeLang && themeLang!==undefined  && themeLang!==null && typeof themeLang !=undefined)
+      {
     if(themeLang=='En')
     {
       //this.global.activeitem=
@@ -59,6 +62,10 @@ export class AppComponent {
       this.menu.enable(false, 'left');
     }
     this.global.change_lang(this.global.lang);
+  }else{
+    this.global.lang='En';
+  }
+  this.global.change_lang(this.global.lang);
    /*  this.storage.get('lang').then((val) => {
       if (val != null) {
         if (val === 'En') {
@@ -191,7 +198,7 @@ export class AppComponent {
     window.localStorage.setItem('activeMenu', index);
     setTimeout( () => {
      this.toggleDetails(item);}
-     ,100) 
+     ,10) 
     console.log("Global Active =>"+this.global.activeitem)
   }
 
