@@ -5,10 +5,11 @@
       <ion-col size-md="6" size="12">
         <ion-item>
           <ion-label position="stacked">{{'name' | translate}}
-            <span  class="red_star" >*</span>
+            <span class="red_star">*</span>
           </ion-label>
 
-          <ion-input type="text" formControlName="name" [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
+          <ion-input type="text" formControlName="name"
+            [ngClass]="{'is-invalid': submitted && myForm.controls.name.errors }"></ion-input>
           <div *ngIf="submitted && myForm.controls.name.errors" class="invalid-feedback">
             <div *ngIf="myForm.controls.name.errors.required"> Name is required</div>
           </div>
@@ -18,72 +19,70 @@
       <ion-col size-md="6" size="12">
         <ion-item>
           <ion-label position="stacked">{{'country' | translate}}</ion-label>
-           
-          <ionic-selectable
-          item-content
-          [canSearch]="true"
-          formControlName="country"
-          itemValueField="id"
-          itemTextField="name_en"
-          (onChange)="countryChange($event)"
-          [items]="countries">
-        </ionic-selectable>
+
+          <ionic-selectable item-content [canSearch]="true" formControlName="country" itemValueField="id"
+            itemTextField="name_en" (onChange)="countryChange($event)" [items]="countries">
+          </ionic-selectable>
         </ion-item>
       </ion-col>
 
       <ion-col size-md="6" size="12">
-        <ion-item> 
+        <ion-item>
           <ion-label position="stacked">{{'Governament' | translate}}</ion-label>
-          <ion-select  placeholder="{{'select' | translate}}"  formControlName="gov"  okText="{{'ok' | translate}}" cancelText="{{'cancel' | translate}}" >
-            <ion-select-option value="{{item.govId}}" ngValue="item.govId" *ngFor="let item of govs " >{{item.govNameAr}}</ion-select-option>
-  
-        </ion-select>
-        <!--   <ionic-selectable
+          <ion-select placeholder="{{'select' | translate}}" formControlName="gov" okText="{{'ok' | translate}}"
+            cancelText="{{'cancel' | translate}}">
+            <ion-select-option value="{{item.govId}}" ngValue="item.govId" *ngFor="let item of govs ">{{item.govNameAr}}
+            </ion-select-option>
+
+          </ion-select>
+          <!--   <ionic-selectable
           item-content
           [canSearch]="true"
           formControlName="gov"
           itemValueField="govId"
           itemTextField="govNameEn"
           [items]="govs"> </ionic-selectable>-->
-        </ion-item> 
-      </ion-col>
-      
-        <ion-col size="12">
-  
-          <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)" [uploader]="uploader"
-            class="drop-zone">
-            <p>أضف الصورة هنا ....</p>
-            <span class="or">أو</span>
-            <div class="file-input-container">
-              <label>
-                <input type="file" name="attachment[]" ng2FileSelect [uploader]="uploader" accept=".jpg,.jpeg,.png" />
-                <ion-icon name="add" color="light"></ion-icon>
-              </label>
-            </div>
-          </div>
-  
-        </ion-col>
-        <ion-col size="12">
-          <p class="img_path" *ngIf="myFile!=''"><img src="{{imgUrl}}{{myFile}}" width="200" /></p>
-        </ion-col>
-  <ion-col size-md="12" size="12">
-        <ion-item>
-          <ion-label  >{{'status' | translate}} 
-            <span  class="red_star" >*</span>
-          </ion-label>
-
-          <ion-checkbox color="secondary" id="options" name='options' slot="start" class="form-control" formControlName="options"  ></ion-checkbox>
-
         </ion-item>
       </ion-col>
-           
-       
+
       <ion-col size="12">
-        <ion-button class="submit-btn ion-float-right" *ngIf="!id" type="submit" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
-        <ion-button class="submit-btn ion-float-right" *ngIf="!id" type="submit" (click)="showGrid=1" [disabled]="!myForm.valid"
-          shape="round">{{'submitG' | translate}}</ion-button>
-        <ion-button class="submit-btn ion-float-right" *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submit' | translate}}</ion-button>
-        <ion-button class="submit-btn ion-float-right" *ngIf="id" (click)="showGrid=1;onSubmit()" [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+
+        <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+          [uploader]="uploader" class="drop-zone">
+          <p>أضف الصورة هنا ....</p>
+          <span class="or">أو</span>
+          <div class="file-input-container">
+            <label>
+              <input type="file" name="attachment[]" ng2FileSelect [uploader]="uploader" accept=".jpg,.jpeg,.png" />
+              <ion-icon name="add" color="light"></ion-icon>
+            </label>
+          </div>
+        </div>
+
+      </ion-col>
+      <ion-col size="12">
+        <p class="img_path" *ngIf="myFile!=''"><img src="{{imgUrl}}{{myFile}}" width="200" /></p>
+      </ion-col>
+      <ion-col size-md="12" size="12">
+        <ion-item class="status_item">
+          <ion-label>{{'status' | translate}}
+            <span class="red_star">*</span>
+          </ion-label> 
+          <ion-checkbox color="secondary" id="options" name='options' slot="end" class="form-control"
+            formControlName="options"></ion-checkbox> 
+        </ion-item>
+      </ion-col>
+
+
+      <ion-col size="12">
+        <ion-button class="submit-btn ion-float-right" *ngIf="!id" type="submit" [disabled]="!myForm.valid"
+          shape="round">{{'submit' | translate}}</ion-button>
+        <ion-button class="submit-btn ion-float-right" *ngIf="!id" type="submit" (click)="showGrid=1"
+          [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
+        <ion-button class="submit-btn ion-float-right" *ngIf="id" (click)="onSubmit()" [disabled]="!myForm.valid"
+          shape="round">{{'submit' | translate}}</ion-button>
+        <ion-button class="submit-btn ion-float-right" *ngIf="id" (click)="showGrid=1;onSubmit()"
+          [disabled]="!myForm.valid" shape="round">{{'submitG' | translate}}</ion-button>
       </ion-col>
     </ion-row>
   </form>
