@@ -116,6 +116,7 @@ public myForm: FormGroup;
          /* End for Upload */
     console.log(this.global.pages)
     this.title='News';
+    
     this.translate.get(this.title).subscribe((res: string) => {           
       this.global.title = res;
        });

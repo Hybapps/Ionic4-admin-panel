@@ -2,6 +2,7 @@ import { GlobalService } from '../../provider/global.service';
 import { MenuController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-statistics',
@@ -11,11 +12,18 @@ import { ActivatedRoute,Router } from '@angular/router';
 export class StatisticsPage implements OnInit {
   ColumnChartData;
   pieChartData;
-  constructor(public menu: MenuController, public global: GlobalService,private route: ActivatedRoute,private router: Router) { }
+  title;
+  constructor(public menu: MenuController, public global: GlobalService,private route: ActivatedRoute,private router: Router,public translate: TranslateService) { }
   ionViewWillEnter(){
     this.menu.enable(true);  
     this.global.title='الاحصاء';
+    this.title='statistics';
+    
+    this.translate.get(this.title).subscribe((res: string) => {           
+      this.global.title = res;
+       });
   }
+  //statistics
   ngOnInit() {
     let loginId=window.localStorage.getItem('adminId');
     if(loginId && loginId!==undefined  && loginId!==null && typeof loginId !=undefined)
