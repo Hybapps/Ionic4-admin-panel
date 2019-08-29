@@ -13,11 +13,7 @@ ion-split-pane >.split-pane-side {
 // .split-pane{
 //     flex-direction: row-reverse;
 // }
-ion-split-pane{
-    &.split-pane-visible{
-      flex-direction: row-reverse!important; 
-    }
-  }
+
 ion-menu {
     // --ion-text-color: var(--ion-color-primary-contrast);    
     // --ion-background-color:var(--ion-color-primary); 

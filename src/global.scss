@@ -16,6 +16,22 @@
 
 html{
     font-size:68%;
+    .top-cir{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color:var(--ion-color-secondary);
+        width: 38vw;
+        height: 24vw; 
+    }
+    .bottom-cir{
+        position: absolute;
+        top: 0;
+        right: 0;
+        color:var(--ion-color-light-tint);
+        width: 21.5vw;
+        height: 16.2vw;
+    }
     &[dir='rtl']{ 
         .forgot-psw{
             ion-col{
@@ -24,23 +40,21 @@ html{
                 }
             }
         }
-   
+        ion-split-pane{
+            &.split-pane-visible{
+              flex-direction: row-reverse!important; 
+            }
+          }
         
         .top-cir{  
             left: auto!important;
             right:0px;
             transform: scale(-1,1);
-            color:var(--ion-color-secondary);
-            width: 38vw;
-            height: 24vw; 
         }
         .bottom-cir{  
             right: auto!important;
             left:0px;
             transform: scale(-1,1);
-            color:var(--ion-color-light-tint);
-            width: 21.5vw;
-            height: 16.2vw;
         }
     }
 }
