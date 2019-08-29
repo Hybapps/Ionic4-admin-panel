@@ -38,6 +38,7 @@ import { environment } from '../environments/environment';
 //import { SortPipe } from './pipes/sort.pipe';
 //import { SearchPipe } from './pipes/search.pipe';
 import { ForgotPasswordPageModule } from './modal/forgot-password/forgot-password.module';
+import { ChangeColorPageModule } from './popover/change-color/change-color.module';
 import { QuillModule } from 'ngx-quill'
 
 library.add(fas, far, fab);
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotificationsListPageModule,
     ListPopoverPageModule,
     ForgotPasswordPageModule,
+    ChangeColorPageModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

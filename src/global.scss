@@ -32,6 +32,39 @@ html{
         width: 21.5vw;
         height: 16.2vw;
     }
+
+    &.lightStyle{ 
+        --ion-color-primary: #c0c1c7;
+        --ion-color-primary-rgb: 192,193,199;
+        --ion-color-primary-contrast: #000000;
+        --ion-color-primary-contrast-rgb: 0,0,0;
+        --ion-color-primary-shade: #a9aaaf;
+        --ion-color-primary-tint: #c6c7cd;
+      
+        --ion-color-secondary: #d6d6d6;
+        --ion-color-secondary-rgb: 214,214,214;
+        --ion-color-secondary-contrast: #000000;
+        --ion-color-secondary-contrast-rgb: 0,0,0;
+        --ion-color-secondary-shade: #bcbcbc;
+        --ion-color-secondary-tint: #dadada;
+    }
+    &.darkStyle{ 
+         
+        --ion-color-primary: #0a0a0c;
+        --ion-color-primary-rgb: 10,10,12;
+        --ion-color-primary-contrast: #ffffff;
+        --ion-color-primary-contrast-rgb: 255,255,255;
+        --ion-color-primary-shade: #09090b;
+        --ion-color-primary-tint: #232324;
+
+        --ion-color-secondary: #9b9b9b;
+        --ion-color-secondary-rgb: 190,190,190;
+        --ion-color-secondary-contrast: #000000;
+        --ion-color-secondary-contrast-rgb: 0,0,0;
+        --ion-color-secondary-shade: #a7a7a7;
+        --ion-color-secondary-tint: #c5c5c5;
+    }
+  
     &[dir='rtl']{ 
         .forgot-psw{
             ion-col{
@@ -182,8 +215,7 @@ ion-searchbar{
 }
 //popover style
 .action-popover{
-    .popover-content{
-        --width: 160px;	
+    .popover-content{ 
         ion-item{
             --border-radius: 0; 	
             --inner-border-width: 0;
@@ -195,8 +227,7 @@ ion-searchbar{
 }
 
 .notification-page{
-    --width:335px;
-    --max-width: 360px;
+     
     .popover-content{
         max-height: 80vh;	
     }
@@ -206,6 +237,8 @@ ion-searchbar{
     --box-shadow:none;	
     border-radius: 4px !important;
     border: 1px solid #ddd;
+    --width: auto;
+    --max-width: 300px; 
 }
 
 //item style

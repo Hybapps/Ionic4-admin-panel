@@ -34,7 +34,8 @@ const routes: Routes = [
 
   /*{ path: 'Grades', loadChildren: './pages/grades/grades.module#GradesPageModule' },
   { path: 'Semistars', loadChildren: './pages/semistars/semistars.module#SemistarsPageModule' },*/
-  { path: 'Cities', loadChildren: './pages/cities/cities.module#CitiesPageModule' },
+  { path: 'Cities', loadChildren: './pages/cities/cities.module#CitiesPageModule' },  { path: 'change-color', loadChildren: './popover/change-color/change-color.module#ChangeColorPageModule' },
+
   //{ path: 'test', loadChildren: './pages/test/test.module#TestPageModule' },
 /*{ path: 'addmodal', loadChildren: './modal/addmodal/addmodal.module#AddmodalPageModule' },
 */
