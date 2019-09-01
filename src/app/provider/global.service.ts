@@ -8,6 +8,7 @@ import { LanguageListPage } from '../popover/language-list/language-list.page';
 import { NotificationsListPage } from './../popover/notifications-list/notifications-list.page';
 import { ListPopoverPage } from './../popover/list-popover/list-popover.page';
 import { Storage } from '@ionic/storage';
+import { ChangeColorPage } from '../popover/change-color/change-color.page';
 @Injectable({
   providedIn: 'root'
 })
@@ -104,6 +105,15 @@ export class GlobalService {
   async listPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: ListPopoverPage,
+      event: ev,
+      showBackdrop: false,
+      cssClass: "action-popover",
+    });
+    return await popover.present();
+  }
+  async changeColor(ev: any){
+    const popover = await this.popoverController.create({
+      component: ChangeColorPage,
       event: ev,
       showBackdrop: false,
       cssClass: "action-popover",

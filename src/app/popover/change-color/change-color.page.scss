@@ -1,0 +1,27 @@
+ion-list{
+    display: inline-block;
+    ion-item{
+        cursor: pointer;
+        span{
+            &[slot="start"]{
+                width: 18px;
+                height:18px;
+                display: inline-block;
+                border-radius:4px;
+                background:var(--ion-color-primary);
+            }
+            &.light{ 
+                background: linear-gradient(135deg, var(--ion-color-light) 0%, var(--ion-color-light) 50%, var(--ion-color-medium) 50%, var(--ion-color-medium) 100%);
+            }
+            &.dark{ 
+                background: linear-gradient(135deg, var(--ion-color-dark) 0%, var(--ion-color-dark) 50%, var(--ion-color-light-shade) 50%, var(--ion-color-light-shade) 100%);
+            }
+            &.custom{ 
+                background: linear-gradient(135deg, var(--hybapps-color-primary) 0%, var(--hybapps-color-primary) 50%, var(--hybapps-color-secondary) 50%, var(--hybapps-color-secondary) 100%);
+            }
+        }
+        .label{
+            font-size:1.2rem; 
+        }
+    }
+}

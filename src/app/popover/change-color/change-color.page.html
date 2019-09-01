@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-list>
+    <ion-item (click)="custom()">
+      <span slot="start" class="custom" ></span>
+      <ion-label>
+        Hybapps Theme
+      </ion-label>
+    </ion-item>
+    <ion-item (click)="changeColor('darkStyle')">
+      <span slot="start"  class="dark"></span>
+      <ion-label>
+        Dark Theme
+      </ion-label>
+    </ion-item>
+    <ion-item  (click)="changeColor('lightStyle')">
+      <span slot="start"  class="light"></span>
+      <ion-label>
+        Light Theme
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
