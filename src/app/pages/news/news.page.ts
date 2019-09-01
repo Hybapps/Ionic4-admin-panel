@@ -7,7 +7,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { FileUploader , FileSelectDirective,FileLikeObject } from 'ng2-file-upload';
 
-import {Md5} from 'ts-md5/dist/md5'
 import { LoadingController } from '@ionic/angular';
 
 import { File } from '@ionic-native/File/ngx';
