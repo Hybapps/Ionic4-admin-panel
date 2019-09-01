@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ashalPanel.dreamsoftit.com" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ashal AdminPanel</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="info@dreamsoft-it.com" href="http://www.dreamsoft-it.com/">Ionic Framework Team</author>
+<widget id="ionic4adminpanel.hybapps.com" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ionic4 admin Panel</name>
+    <description>An awesome open source free Ionic4 admin panel</description>
+    <author email="info@hybapps.com" href="https://www.hybapps.com/">Hybapps Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

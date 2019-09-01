@@ -22,7 +22,6 @@ class crudController
     {
       
         $this->db = $container->get('db');
-       // echo $this->db;
     }
     
     //---getAll
@@ -40,16 +39,7 @@ class crudController
              if($args['whereStatement'])
                     $inputs['whereStatement']=$args['whereStatement'];
             
-          // return;
        }
-       /* if (!$internal)
-        {
-            $this->request=$request;
-            $this->response=$response;
-
-            $inputs = $request->getParsedBody();
-        }
-    */
        $table = $args['table'];
        $page = $args['page'];
 
@@ -96,12 +86,6 @@ class crudController
             $sql.=" LIMIT ".$pageSize." OFFSET ".$pageSize*$page;
        
        $sth = $this->db->prepare($sql);
-      
-     /* if($table == "requests")
-      {
-          $sql2 = "SELECT if(GROUP_CONCAT(tableNum)<>'null',GROUP_CONCAT(tableNum),'') as fullTables, eventId FROM requests where requests.requestStatus = 2 GROUP BY eventId";
-          $sth2 = $this->db->prepare($sql2);
-      }*/
 
        try{
            
@@ -148,7 +132,6 @@ class crudController
 
         }
      $sql=$this->prepareSql("insert",$table,$inputs);
-     //echo $sql;
      $sth = $this->db->prepare($sql);
      try
         {
@@ -269,10 +252,8 @@ public function prepareSql($sqlType,$tableName,$inputs)
     else if($sqlType=="bulk")
     {
         $sql="insert into ".$tableName." (";
-          // $sqlVales=") ";
           $sqlValues=" ) values (";
   
-         //  print_r($inputs); die();
       for($i=0;$i<count($inputs);$i++){
         $index=1;
         if($i>0)$sqlValues.=" , (";
@@ -316,13 +297,10 @@ public function prepareSql($sqlType,$tableName,$inputs)
 public function unique($table,$fields,$values,$escapeId)
 {
     $duplicateData=array();
-    //$duplicateData['duplicateData']=array();
     foreach($fields as $field ) 
     {
-        //echo $field.",";
         $sql="select ".$field." from ".$table." where id !=".$escapeId." and ";
         $sql.=$field."='".$values[$field]."'";
-        //echo $sql;
     
     $sth = $this->db->prepare($sql);
     try{
@@ -341,17 +319,12 @@ public function unique($table,$fields,$values,$escapeId)
     }
          if(!$responseData['errorCode'])
          {
-           // echo "Duplicate found";
-           // print_r($duplicateData);
-
-
             $responseData = array();
             $responseData['error'] = false; 
             $responseData['duplicateData'] = $duplicateData; 
 
          }
      return $responseData;   
-    //return $this->response->withJson($responseData);  
     
 }
 //---- Bulk Insert
@@ -375,9 +348,7 @@ public function bulkAdd(Request $request, Response  $response, $args)
                 return $this->response->withJson($uniqueResult);  
 
         }
-      //  print_r($inputs); die();
      $sql=$this->prepareSql("bulk",$table,$inputs);
-    // echo $sql; die();
      $sth = $this->db->prepare($sql);
      try
         {
@@ -432,7 +403,6 @@ public function upload(Request $request, Response  $response)
 
     
     $uploadedFiles = $request->getUploadedFiles();
-    //echo $uploadedFiles['attachment'];print_r($uploadedFiles['attachment']); die();
     if (empty($uploadedFiles['attachment'])) {
             echo "no files";
         }
@@ -452,12 +422,9 @@ public function upload(Request $request, Response  $response)
         if (!file_exists($folderPath)) {mkdir($folderPath, 0777, true); chmod($folderPath,0777);}
         $folderPath= '../uploadFolder/medium/'.$folderName;
         if (!file_exists($folderPath)) {mkdir($folderPath, 0777, true); chmod($folderPath,0777);}
-  //  echo "Request New Folder"; die();
     }
 
   $src=($folderPath)? "../$pathToUpload/original/$folderName/$filename" : "../$pathToUpload/original/$filename";
-    //echo "SRC".$src;
-        //Upload file to the Original folder        
     $file->moveTo($src);
     if($requestSmallThumb )
         {
@@ -480,44 +447,6 @@ public function upload(Request $request, Response  $response)
         $responseData['data'] = $data; 
         return $this->response->withJson($responseData);  
     
-    
-    //   $file->moveTo('../uploadFolder/12.png');
-        //   foreach ($request->getUploadedFiles() as $file)
-    //     {
-            
-    //     }
-
-    // $newfile = $files['newfile'];
-    // if ($newfile->getError() === UPLOAD_ERR_OK) 
-    //     {
-
-    //     $sourceFileName = $newfile->getClientFilename();
-    //     $fparts = pathinfo($sourceFileName);
-    //     $ext = strtolower($fparts['extension']);
-    //     $uploadFileName=time().".".$ext;
-    //     $src="../$pathToUpload/original/$uploadFileName";
-    //     //Upload file to the Original folder        
-    //     $newfile->moveTo($src);
-    //     if($requestSmallThumb )
-    //         {
-    //         $thumbSmallDest="../$pathToUpload/small/$uploadFileName";
-    //         $this->createThumb($src,$thumbSmallDest,$thumbSmallWidth,false);
-    //         }
-    //     if($requestMediumThumb )
-    //         {
-    //         $thumbMediumDest="../$pathToUpload/medium/$uploadFileName";
-    //         $this->createThumb($src,$thumbMediumDest,$thumbMediumWidth,false);
-    //         }
-    //     $responseData = array();
-    //     $responseData['error'] = false; 
-    //     $data=array();
-    //     $data['imageFileName']="$uploadFileName";
-    //     $data['imageFilePath']="$pathToUpload/";
-       
-    //     $responseData['data'] = $data; 
-    //     return $this->response->withJson($responseData);  
-
-    //     }
 }
 
 public function createThumb($src,$dest,$desired_width , $desired_height)
@@ -590,8 +519,7 @@ public function excelupload(Request $request,Response $response)
         
 
   $src=($folderPath)? "../$pathToUpload/excel/$filename" : "../$pathToUpload/excel/$filename";
-    //echo "SRC".$src;
-        //Upload file to the Original folder        
+     
     $file->moveTo($src);
     
   
@@ -621,6 +549,57 @@ return $filename;
 }
 
 
+  //---contactUs
+  public function contactUs(Request $request, Response $response, $args)
+  {
+   
+          $this->request=$request;
+          $this->response=$response;
+          $inputs=array();
+          $inputs = $request->getParsedBody();
+          $result=array();  
+  
+          $mail = new PHPMailer(true);
+       
+          $email = $inputs['email'];
+          $message = $inputs['message'];
+                  try{
+  
+                      $mail->SMTPDebug = 0;                                 
+                      $mail->isSMTP();                                      
+                      $mail->Host = 'smtp.gmail.com';  
+                      $mail->SMTPAuth = true;                               
+                      $mail->Username = 'xxxx@gmail.com';                 
+                      $mail->Password = 'xxxxxxxxx';                          
+                      $mail->SMTPSecure = 'tls';                            
+                      $mail->Port = 587;
+                      
+                      $mail->setFrom('xxxxxxxx@gmail.com', 'xxxxxxx');
+                      $mail->addAddress('xxxxxxxxx@gmail.com');
+  
+                      $mail->isHTML(true); //send email in html formart
+                      $mail->Subject = 'Admin panel  ,Contact us message';
+                      $mail->Body    = "$email<br> $message";
+                 
+                     $mail->send();
+                      $responseData['error'] = false; 
+  
+          }
+   
+             
+              catch (Exception $e) {
+                  $error = $mail->ErrorInfo;
+                  $responseData['error'] = true; 
+              }    
+            
+           return $this->response->withJson($responseData);
+       
+  
+  
+     
+  }
+  //------
+  }
 //------
 }
 
